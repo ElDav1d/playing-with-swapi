@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     getCharacterBios() {
-      axios.get('https://swapi.co/api/people/')
+      axios.get('https://swapi.dev/api/people/')
         .then(response => {
           this.charactersList = response.data.results;
         });
