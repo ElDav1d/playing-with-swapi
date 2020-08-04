@@ -21,13 +21,26 @@ export default {
   },
   methods: {
     getCharacterData() {
-      axios.get('https://swapi.dev/api/people/')
+      let url = 'https://swapi.dev/api/people/'
+      axios.get(url)
         .then(response => {
           this.charactersList = response.data.results;
+          this.getAllPagesData(response, url)
         })
         .catch(error => { console.log(error) });
     },
-    
+    getAllPagesData(response, url) {
+      if (response.data.next === null){
+        return;
+      } else {
+        url = response.data.next;
+        axios.get(url)
+          .then(response => {
+            this.getAllPagesData(response, url);
+            this.charactersList = [...this.charactersList, ...response.data.results];
+          }) 
+      }
+    } 
   }
 }
 </script>
