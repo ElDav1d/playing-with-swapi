@@ -17,10 +17,10 @@ export default {
     }
   },
   mounted() {
-    this.getCharacterBios();
+    this.getCharacterData();
   },
   methods: {
-    getCharacterBios() {
+    getCharacterData() {
       axios.get('https://swapi.dev/api/people/')
         .then(response => {
           this.charactersList = response.data.results;
