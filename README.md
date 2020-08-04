@@ -1,6 +1,8 @@
-# axios
+# Playing with SWAPI
 
-> A Vue.js project
+Just a playground for Vue.js first steps consuming from SWAPI with axios.
+
+The initial boilerplate was extracted from GeeksHubs Academy's 'Curso de Vue 2 para iniciarse en el mundo de las SPA' course by [Francisco Javier Alapont](https://github.com/Dygerydoo).
 
 ## Build Setup
 
