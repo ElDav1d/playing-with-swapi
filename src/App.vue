@@ -24,8 +24,10 @@ export default {
       axios.get('https://swapi.dev/api/people/')
         .then(response => {
           this.charactersList = response.data.results;
-        });
-    }
+        })
+        .catch(error => { console.log(error) });
+    },
+    
   }
 }
 </script>
