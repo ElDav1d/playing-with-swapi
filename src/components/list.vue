@@ -1,9 +1,14 @@
 <template>
   <div>
     <ul>
-      <li v-for="item in list">
-        {{ item.name }}
-      </li>
+      <router-link
+        v-for="(item, index) in list"
+        class="navbar-list-item"
+        active-class="active"
+        tag="li"
+        exact to="/character">
+        <a>{{ index + 1 }} - {{ item.name }}</a>
+      </router-link>
     </ul>
   </div>
 </template>
