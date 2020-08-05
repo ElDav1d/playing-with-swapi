@@ -6,6 +6,7 @@
 
 <script>
 import CharacterList from './components/list.vue';
+
 export default {
   name: 'app',
   components: {
