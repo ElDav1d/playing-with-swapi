@@ -20,10 +20,10 @@ export default {
     }
   },
   mounted() {
-    this.getCharacterData();
+    this.getItemsData();
   },
   methods: {
-    getCharacterData() {
+    getItemsData() {
       let url = 'https://swapi.dev/api/people/'
       axios.get(url)
         .then(response => {
