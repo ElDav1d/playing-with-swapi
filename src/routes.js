@@ -4,6 +4,6 @@ import Character from './components/character.vue';
 
 export const routes = [
   { path: '/', component: Home },
-  { path: '/list', component: List },
-  { path: '/character', component: Character },
+  { path: '/characters', component: List },
+  { path: '/characters/*', component: Character }
 ];

@@ -6,7 +6,7 @@
         class="navbar-list-item"
         active-class="active"
         tag="li"
-        exact to="/character">
+        exact :to="`characters/${item.name}`">
         <a>{{ index + 1 }} - {{ item.name }}</a>
       </router-link>
     </ul>
@@ -36,7 +36,7 @@ export default {
         });
     },
     getAllPagesData(response, url) {
-      if (response.data.next === null){
+      if (response.data.next === null) {
         return;
       } else {
         url = response.data.next;
@@ -47,7 +47,7 @@ export default {
           }) 
       }
     } 
-  }
+  },
 }
 </script>
 
