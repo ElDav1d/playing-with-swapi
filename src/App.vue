@@ -1,49 +1,15 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for="character in charactersList">
-        {{ character.name }}
-      </li>
-    </ul>
+    <character-list></character-list>
   </div>
 </template>
 
 <script>
+import CharacterList from './components/list.vue';
 export default {
   name: 'app',
-  data () {
-    return {
-      charactersList: [],
-    }
-  },
-  mounted() {
-    this.getCharacterData();
-  },
-  methods: {
-    getCharacterData() {
-      let url = 'https://swapi.dev/api/people/'
-      axios.get(url)
-        .then(response => {
-          this.charactersList = response.data.results;
-          this.getAllPagesData(response, url)
-        })
-        .catch(error => {
-          console.log(error);
-          alert( `Sorry, something went wrong. Please refresh the page after closing this dialog.` );
-        });
-    },
-    getAllPagesData(response, url) {
-      if (response.data.next === null){
-        return;
-      } else {
-        url = response.data.next;
-        axios.get(url)
-          .then(response => {
-            this.getAllPagesData(response, url);
-            this.charactersList = [...this.charactersList, ...response.data.results];
-          }) 
-      }
-    } 
+  components: {
+    CharacterList,
   }
 }
 </script>
@@ -60,19 +26,6 @@ export default {
 
 h1, h2 {
   font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 250px;
-}
-
-li {
-  border: 1px solid #ddd;
-  padding: .2em;
-  margin: 0 10px;
 }
 
 a {
