@@ -27,7 +27,10 @@ export default {
           this.charactersList = response.data.results;
           this.getAllPagesData(response, url)
         })
-        .catch(error => { console.log(error) });
+        .catch(error => {
+          console.log(error);
+          alert( `Sorry, something went wrong. Please refresh the page after closing this dialog.` );
+        });
     },
     getAllPagesData(response, url) {
       if (response.data.next === null){
