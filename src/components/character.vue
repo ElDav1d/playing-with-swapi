@@ -16,8 +16,20 @@
 export default {
   data () {
     return {
+      index: 0,
     }
   },
+  mounted() {
+    this.getIndexFromPath();
+  },
+  methods: {
+    getIndexFromPath() {
+      const path = window.location.pathname.split('/');
+      const lastPieceOfPath = path[path.length - 1];
+      const firstNumber = parseInt(lastPieceOfPath.match(/^\d+/)[0]);
+      this.index = firstNumber;
+    },
+  }
 }
 </script>
 

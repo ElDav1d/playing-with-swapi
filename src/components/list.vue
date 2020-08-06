@@ -1,12 +1,7 @@
 <template>
   <div>
     <ul>
-      <router-link
-        v-for="(item, index) in list"
-        class="navbar-list-item"
-        active-class="active"
-        tag="li"
-        exact :to="`characters/${item.name}`">
+      <router-link v-for="(item, index) in list" :key="index" class="navbar-list-item" active-class="active" tag="li" exact :to="`characters/${index + 1}${item.name}`">
         <a>{{ index + 1 }} - {{ item.name }}</a>
       </router-link>
     </ul>
@@ -24,15 +19,15 @@ export default {
   },
   methods: {
     getItemsData() {
-      let url = 'https://swapi.dev/api/people/'
+      let url = 'https://swapi.dev/api/people/';
       axios.get(url)
         .then(response => {
           this.list = response.data.results;
-          this.getAllPagesData(response, url)
+          this.getAllPagesData(response, url);
         })
         .catch(error => {
           console.log(error);
-          alert( `Sorry, something went wrong. Please refresh the page after closing this dialog.` );
+          alert(`Sorry, something went wrong. Please refresh the page after closing this dialog.`);
         });
     },
     getAllPagesData(response, url) {
