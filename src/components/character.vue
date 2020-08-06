@@ -17,10 +17,15 @@ export default {
   data () {
     return {
       index: 0,
+      name: '',
+      species: [],
+      homeworld: '',
+      films: []
     }
   },
   mounted() {
     this.getIndexFromPath();
+    this.getCharacterData();
   },
   methods: {
     getIndexFromPath() {
@@ -28,6 +33,32 @@ export default {
       const lastPieceOfPath = path[path.length - 1];
       const firstNumber = parseInt(lastPieceOfPath.match(/^\d+/)[0]);
       this.index = firstNumber;
+    },
+    getCharacterData() {
+      axios.get( `https://swapi.dev/api/people/${this.index}`)
+      .then(response => {
+        const { name, species, homeworld, films } = response.data;
+
+        this.name = name;
+
+        films.forEach(film => {
+          axios.get(film)
+          .then(response => { this.films.push(response.data.title); })
+          .catch(error => { console.log(error); })
+        });
+
+        if (species.length) {
+          axios.get(species)
+         .then(response => { this.species = response.data.name; })
+         .catch(error => { console.log(error); })
+        } else {
+          this.species = 'humanoid';
+        }
+        
+        axios.get(homeworld)
+         .then(response => { this.homeworld = response.data.name; })
+         .catch(error => { console.log(error); })
+      });
     },
   }
 }
@@ -38,6 +69,4 @@ export default {
     padding: 2rem;
     border: 1px solid #ddd;
   }
-
-
 </style>

@@ -27,7 +27,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
-          alert(`Sorry, something went wrong. Please refresh the page after closing this dialog.`);
+          alert(`Sorry, something went wrong When loading this list. Please refresh the page after closing this dialog.`);
         });
     },
     getAllPagesData(response, url) {
