@@ -1,13 +1,15 @@
 <template>
   <div>
     <ul>
-      <router-link v-for="(item, index) in list" :key="index" class="navbar-list-item" active-class="active" tag="li" exact :to="`characters/${index + 1}${item.name}`">
-        <a>{{ index + 1 }} - {{ item.name }}</a>
+      <router-link v-for="(item, index) in list" :key="index" class="navbar-list-item" active-class="active" tag="li" exact :to="`characters/${formatName(item.name)}`">
+        <a @click="saveItemIndex(index + 1)">{{ item.name }}</a>
       </router-link>
     </ul>
   </div>
 </template>
+
 <script>
+
 export default {
   data () {
     return {
@@ -18,6 +20,9 @@ export default {
     this.getItemsData();
   },
   methods: {
+    saveItemIndex(index) {
+      this.$store.commit('saveIndex', index);
+    },
     getItemsData() {
       let url = 'https://swapi.dev/api/people/';
       axios.get(url)
@@ -41,8 +46,11 @@ export default {
             this.list = [...this.list, ...response.data.results];
           }) 
       }
-    } 
-  },
+    },
+    formatName(name) {
+      return name.replace(/[\s]+/g, '-').toLowerCase();
+    },
+  }
 }
 </script>
 

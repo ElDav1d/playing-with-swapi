@@ -14,10 +14,11 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
-      index: 0,
+      index: this.$store.state.itemIndex,
       name: '',
       species: [],
       homeworld: '',
@@ -25,16 +26,9 @@ export default {
     }
   },
   mounted() {
-    this.getIndexFromPath();
     this.getCharacterData();
   },
   methods: {
-    getIndexFromPath() {
-      const path = window.location.pathname.split('/');
-      const lastPieceOfPath = path[path.length - 1];
-      const firstNumber = parseInt(lastPieceOfPath.match(/^\d+/)[0]);
-      this.index = firstNumber;
-    },
     getCharacterData() {
       axios.get( `https://swapi.dev/api/people/${this.index}`)
       .then(response => {
