@@ -79,7 +79,7 @@ export default {
       })
     },
     displaySearchResults() {
-      this.getItemsList(); // needs to be refreshed
+      this.getItemsList();
       const searchInput = this.$store.state.searchInput.toLowerCase();
       const newList = this.itemsList.filter( item => item.name.toLowerCase().indexOf(searchInput) !== -1)
       this.itemsList = newList;
