@@ -22,8 +22,8 @@ import Search from './search.vue';
 export default {
   data () {
     return {
-      list: [],
-      query: 'initial',
+      requestedData: [],
+      itemsList: [],
     }
   },
   mounted() {
@@ -40,7 +40,7 @@ export default {
       let url = 'https://swapi.dev/api/people/';
       axios.get(url)
         .then(response => {
-          this.list = response.data.results;
+          this.requestedData = response.data.results;
           this.getAllPagesData(response, url);
         })
         .catch(error => {
@@ -56,10 +56,11 @@ export default {
         axios.get(url)
           .then(response => {
             this.getAllPagesData(response, url);
-            this.list = [...this.list, ...response.data.results];
+            this.requestedData = [...this.requestedData, ...response.data.results];
           }) 
       }
       this.addIDToItems();
+      this.getItemsList();
     },
     addIDToItems() {
       this.requestedData.forEach((item, index) => {
@@ -69,16 +70,19 @@ export default {
     formatPath(name) {
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
+    getItemsList() {
+      this.itemsList = this.requestedData.map( item => {
+        return {
+          name : item.name,
+          id: item.id
+        }
+      })
+    },
     displaySearchResults() {
-      this.query = this.$store.state.searchInput;
-      axios.get(`https://swapi.dev/api/people/?search=${this.query}`)
-        .then(response => {
-          this.list = response.data.results;
-        })
-        .catch(error => {
-          console.log(error);
-          alert(`Sorry, something went wrong When loading your search Please refresh the page after closing this dialog.`);
-        });
+      this.getItemsList(); // needs to be refreshed
+      const searchInput = this.$store.state.searchInput.toLowerCase();
+      const newList = this.itemsList.filter( item => item.name.toLowerCase().indexOf(searchInput) !== -1)
+      this.itemsList = newList;
     }
   }
 }
