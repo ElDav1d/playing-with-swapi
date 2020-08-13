@@ -1,5 +1,6 @@
 <template>
   <div>
+    <search></search>
     <ul>
       <router-link v-for="(item, index) in list" :key="index" class="navbar-list-item" active-class="active" tag="li" exact :to="`characters/${formatName(item.name)}`">
         <a @click="saveItemIndex(index + 1)">{{ item.name }}</a>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+import Search from './search.vue';
 
 export default {
   data () {
@@ -18,6 +20,9 @@ export default {
   },
   mounted() {
     this.getItemsData();
+  },
+  components: {
+    Search,
   },
   methods: {
     saveItemIndex(index) {
@@ -64,7 +69,7 @@ ul {
 
 li {
   border: 1px solid #ddd;
-  padding: .2em;
+  padding: .75rem;
   margin: 0 10px;
 }
 </style>
