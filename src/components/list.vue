@@ -9,7 +9,7 @@
         active-class="active"
         tag="li"
         exact
-        :to="`characters/${formatName(item.name)}`">
+        :to="`characters/${formatPath(item.name)}`">
         <a @click="saveItemID(item.id)">{{ item.name }}</a>
       </router-link>
     </ul>
@@ -61,12 +61,12 @@ export default {
       }
       this.addIDToItems();
     },
-    formatName(name) {
     addIDToItems() {
       this.requestedData.forEach((item, index) => {
         item.id = index + 1;
       });
     },
+    formatPath(name) {
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
     displaySearchResults() {
