@@ -1,7 +1,12 @@
 <template>
   <form @submit.prevent="saveSearchValue">
     <label>Search your character</label>
-    <input type="text" placeholder="Type your search" v-model="searchValue" @keyup.enter="saveSearchValue"/>
+    <input
+      type="text"
+      placeholder="Type your search"
+      v-model="searchValue"
+      @keyup.enter="saveSearchValue"
+    />
     <button type="submit">Submit your search</button>
   </form>
 </template>
