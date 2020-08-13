@@ -18,7 +18,7 @@
 export default {
   data () {
     return {
-      index: this.$store.state.itemIndex,
+      id: this.$store.state.itemID,
       name: '',
       species: [],
       homeworld: '',
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     getCharacterData() {
-      axios.get( `https://swapi.dev/api/people/${this.index}`)
+      axios.get( `https://swapi.dev/api/people/${this.id}`)
       .then(response => {
         const { name, species, homeworld, films } = response.data;
 
