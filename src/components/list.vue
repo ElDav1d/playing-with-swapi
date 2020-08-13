@@ -1,9 +1,16 @@
 <template>
   <div>
-    <search></search>
+    <search @display-search-results="displaySearchResults"></search>
     <ul>
-      <router-link v-for="(item, index) in list" :key="index" class="navbar-list-item" active-class="active" tag="li" exact :to="`characters/${formatName(item.name)}`">
-        <a @click="saveItemIndex(index + 1)">{{ item.name }}</a>
+      <router-link
+        v-for="(item, index) in list"
+        :key="index"
+        class="navbar-list-item"
+        active-class="active"
+        tag="li"
+        exact
+        :to="`characters/${formatName(item.name)}`">
+        <a @click="saveItemIndex(index + 1)">{{ index }} - {{ item.name }}</a>
       </router-link>
     </ul>
   </div>
@@ -16,6 +23,7 @@ export default {
   data () {
     return {
       list: [],
+      query: 'initial',
     }
   },
   mounted() {
@@ -55,6 +63,17 @@ export default {
     formatName(name) {
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
+    displaySearchResults() {
+      this.query = this.$store.state.searchInput;
+      axios.get(`https://swapi.dev/api/people/?search=${this.query}`)
+        .then(response => {
+          this.list = response.data.results;
+        })
+        .catch(error => {
+          console.log(error);
+          alert(`Sorry, something went wrong When loading your search Please refresh the page after closing this dialog.`);
+        });
+    }
   }
 }
 </script>
