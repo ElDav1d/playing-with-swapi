@@ -3,14 +3,14 @@
     <search @display-search-results="displaySearchResults"></search>
     <ul>
       <router-link
-        v-for="(item, index) in list"
-        :key="index"
+        v-for="(item) in itemsList"
+        :key="item.id"
         class="navbar-list-item"
         active-class="active"
         tag="li"
         exact
         :to="`characters/${formatName(item.name)}`">
-        <a @click="saveItemIndex(index + 1)">{{ index }} - {{ item.name }}</a>
+        <a @click="saveItemID(item.id)">{{ item.name }}</a>
       </router-link>
     </ul>
   </div>
@@ -33,8 +33,8 @@ export default {
     Search,
   },
   methods: {
-    saveItemIndex(index) {
-      this.$store.commit('saveIndex', index);
+    saveItemID(id) {
+      this.$store.commit('saveItemID', id);
     },
     getItemsData() {
       let url = 'https://swapi.dev/api/people/';
@@ -59,8 +59,14 @@ export default {
             this.list = [...this.list, ...response.data.results];
           }) 
       }
+      this.addIDToItems();
     },
     formatName(name) {
+    addIDToItems() {
+      this.requestedData.forEach((item, index) => {
+        item.id = index + 1;
+      });
+    },
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
     displaySearchResults() {
