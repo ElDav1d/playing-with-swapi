@@ -1,33 +1,46 @@
 <template>
   <div>
+    <search @display-search-results="displaySearchResults"></search>
     <ul>
-      <router-link v-for="(item, index) in list" :key="index" class="navbar-list-item" active-class="active" tag="li" exact :to="`characters/${formatName(item.name)}`">
-        <a @click="saveItemIndex(index + 1)">{{ item.name }}</a>
+      <router-link
+        v-for="(item) in itemsList"
+        :key="item.id"
+        class="navbar-list-item"
+        active-class="active"
+        tag="li"
+        exact
+        :to="`characters/${formatPath(item.name)}`">
+        <a @click="saveItemID(item.id)">{{ item.name }}</a>
       </router-link>
     </ul>
   </div>
 </template>
 
 <script>
+import Search from './search.vue';
 
 export default {
   data () {
     return {
-      list: [],
+      requestedData: [],
+      itemsList: [],
     }
   },
   mounted() {
     this.getItemsData();
   },
+  components: {
+    Search,
+  },
   methods: {
-    saveItemIndex(index) {
-      this.$store.commit('saveIndex', index);
+    saveItemID(id) {
+      this.$store.commit('saveItemID', id);
     },
     getItemsData() {
       let url = 'https://swapi.dev/api/people/';
       axios.get(url)
         .then(response => {
-          this.list = response.data.results;
+          this.requestedData = response.data.results;
           this.getAllPagesData(response, url);
         })
         .catch(error => {
@@ -43,13 +56,34 @@ export default {
         axios.get(url)
           .then(response => {
             this.getAllPagesData(response, url);
-            this.list = [...this.list, ...response.data.results];
+            this.requestedData = [...this.requestedData, ...response.data.results];
           }) 
       }
+      this.addIDToItems();
+      this.getItemsList();
     },
-    formatName(name) {
+    addIDToItems() {
+      this.requestedData.forEach((item, index) => {
+        item.id = index + 1;
+      });
+    },
+    formatPath(name) {
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
+    getItemsList() {
+      this.itemsList = this.requestedData.map( item => {
+        return {
+          name : item.name,
+          id: item.id
+        }
+      })
+    },
+    displaySearchResults() {
+      this.getItemsList(); // needs to be refreshed
+      const searchInput = this.$store.state.searchInput.toLowerCase();
+      const newList = this.itemsList.filter( item => item.name.toLowerCase().indexOf(searchInput) !== -1)
+      this.itemsList = newList;
+    }
   }
 }
 </script>
@@ -64,7 +98,7 @@ ul {
 
 li {
   border: 1px solid #ddd;
-  padding: .2em;
+  padding: .75rem;
   margin: 0 10px;
 }
 </style>

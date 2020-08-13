@@ -6,11 +6,15 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store ({
   state: {
-    itemIndex: 0,
+    itemID: '',
+    searchInput: '',
   },
   mutations: {
-    saveIndex: (state, index) => {
-      state.itemIndex = index;
+    saveItemID: (state, id) => {
+      state.itemID = id;
+    },
+    saveSearchValue: (state, value) => {
+      state.searchInput = value;
     }
   },
   plugins: [createPersistedState()],
