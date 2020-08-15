@@ -14,8 +14,7 @@
 </template>
 
 <script>
-import { singularizeTitle } from '../mixins'
-
+import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
 export default {
   data () {
     return {
@@ -31,6 +30,7 @@ export default {
   },
   mixins: [
     singularizeTitle,
+    getNestedElementsSingleValue
   ],
   methods: {
     getCharacterData() {
@@ -39,12 +39,7 @@ export default {
           const { name, species, homeworld, films } = response.data;
 
           this.name = name;
-
-          films.forEach(film => {
-            axios.get(film)
-            .then(response => { this.films.push(response.data.title); })
-            .catch(error => { console.log(error); })
-          });
+          this.films = this.getNestedElementsSingleValue(films, 'title');
 
           if (species.length) {
             axios.get(species)

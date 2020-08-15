@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { singularizeTitle } from '../mixins'
+import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
 
 export default {
   data () {
@@ -40,6 +40,7 @@ export default {
   },
   mixins: [
     singularizeTitle,
+    getNestedElementsSingleValue
   ],
   methods: {
     getWorldData() {
@@ -50,22 +51,13 @@ export default {
         this.name = name;
         this.population = population;
         this.climate = climate;
-
-        films.forEach(film => {
-          axios.get(film)
-          .then(response => { this.films.push(response.data.title); })
-          .catch(error => { console.log(error); })
-        });
-
-        residents.forEach(resident => {
-          axios.get(resident)
-          .then(response => { this.residents.push(response.data.name); })
-          .catch(error => { console.log(error); })
-        });
+        this.films = this.getNestedElementsSingleValue(films, 'title');
+        this.residents = this.getNestedElementsSingleValue(residents, 'name');
       })
       .catch(error => {
         console.log(error);
-        alert(`Sorry, something went wrong when loading this world. Please refresh the page after closing this dialog.`);
+        alert(`Sorry, something went wrong when loading this world. Please refresh the page after closing 
+        this dialog.`);
       });
     },
   }
