@@ -10,12 +10,14 @@
         {{ film }}
       </li>
     </ul>
-    <h2>Some of my residents have been:</h2>
-    <ul>
-      <li v-for="resident in residents">
-        {{ resident }}
-      </li>
+    <template v-if="residents.length">
+      <h2>Some of my residents have been:</h2>
+      <ul>
+        <li v-for="resident in residents">
+          {{ resident }}
+        </li>
     </ul>
+    </template>
   </article>
 </template>
 
@@ -26,33 +28,47 @@ export default {
   data () {
     return {
       id: this.$store.state.itemID,
-      name: 'Tattoine',
-      population: '20000000',
+      name: '',
+      population: '',
       climate: 'arid',
-      films: [
-        "http://swapi.dev/api/films/1/", 
-        "http://swapi.dev/api/films/3/", 
-        "http://swapi.dev/api/films/4/", 
-        "http://swapi.dev/api/films/5/", 
-        "http://swapi.dev/api/films/6/"
-      ],
-      residents: [
-        "http://swapi.dev/api/people/1/", 
-        "http://swapi.dev/api/people/2/", 
-        "http://swapi.dev/api/people/4/", 
-        "http://swapi.dev/api/people/6/", 
-        "http://swapi.dev/api/people/7/", 
-        "http://swapi.dev/api/people/8/", 
-        "http://swapi.dev/api/people/9/", 
-        "http://swapi.dev/api/people/11/", 
-        "http://swapi.dev/api/people/43/", 
-        "http://swapi.dev/api/people/62/"
-      ],
+      films: [],
+      residents: [],
     }
+  },
+  mounted() {
+    this.getWorldData();
   },
   mixins: [
     singularizeTitle,
   ],
+  methods: {
+    getWorldData() {
+      axios.get( `https://swapi.dev/api/planets/${this.id}`)
+      .then(response => {
+        const { name, population, climate, films, residents } = response.data;
+
+        this.name = name;
+        this.population = population;
+        this.climate = climate;
+
+        films.forEach(film => {
+          axios.get(film)
+          .then(response => { this.films.push(response.data.title); })
+          .catch(error => { console.log(error); })
+        });
+
+        residents.forEach(resident => {
+          axios.get(resident)
+          .then(response => { this.residents.push(response.data.name); })
+          .catch(error => { console.log(error); })
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        alert(`Sorry, something went wrong when loading this world. Please refresh the page after closing this dialog.`);
+      });
+    },
+  }
 }
 
 </script>
