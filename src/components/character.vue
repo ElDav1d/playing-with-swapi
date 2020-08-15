@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { singularizeTitle } from '../mixins'
 
 export default {
   data () {
@@ -28,17 +29,9 @@ export default {
   mounted() {
     this.getCharacterData();
   },
-  props: {
-    sectionTitle: {
-      type: String,
-      required: true
-    },
-  },
-  computed: {
-    singularizeTitle() {
-      return this.$props.sectionTitle.slice(0, -1);
-    }
-  },
+  mixins: [
+    singularizeTitle,
+  ],
   methods: {
     getCharacterData() {
       axios.get( `https://swapi.dev/api/people/${this.id}`)
