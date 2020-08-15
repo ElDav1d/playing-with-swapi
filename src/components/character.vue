@@ -53,6 +53,10 @@ export default {
         axios.get(homeworld)
          .then(response => { this.homeworld = response.data.name; })
          .catch(error => { console.log(error); })
+      })
+      .catch(error => {
+        console.log(error);
+        alert(`Sorry, something went wrong when loading this character. Please refresh the page after closing this dialog.`);
       });
     },
   }
