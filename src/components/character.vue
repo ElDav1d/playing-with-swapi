@@ -35,32 +35,32 @@ export default {
   methods: {
     getCharacterData() {
       axios.get( `https://swapi.dev/api/people/${this.id}`)
-      .then(response => {
-        const { name, species, homeworld, films } = response.data;
+        .then(response => {
+          const { name, species, homeworld, films } = response.data;
 
-        this.name = name;
+          this.name = name;
 
-        films.forEach(film => {
-          axios.get(film)
-          .then(response => { this.films.push(response.data.title); })
-          .catch(error => { console.log(error); })
-        });
+          films.forEach(film => {
+            axios.get(film)
+            .then(response => { this.films.push(response.data.title); })
+            .catch(error => { console.log(error); })
+          });
 
-        if (species.length) {
-          axios.get(species)
-         .then(response => { this.species = response.data.name; })
-         .catch(error => { console.log(error); })
-        } else {
-          this.species = 'human';
-        }
-        
-        axios.get(homeworld)
-         .then(response => { this.homeworld = response.data.name; })
-         .catch(error => { console.log(error); })
-      })
-      .catch(error => {
-        console.log(error);
-        alert(`Sorry, something went wrong when loading this character. Please refresh the page after closing this dialog.`);
+          if (species.length) {
+            axios.get(species)
+              .then(response => { this.species = response.data.name; })
+              .catch(error => { console.log(error); })
+          } else {
+            this.species = 'human';
+          }
+          
+          axios.get(homeworld)
+            .then(response => { this.homeworld = response.data.name; })
+            .catch(error => { console.log(error); })
+        })
+        .catch(error => {
+          console.log(error);
+          alert(`Sorry, something went wrong when loading this character. Please refresh the page after closing this dialog.`);
       });
     },
   }
