@@ -1,7 +1,7 @@
 <template>
   <div>
     <search @display-search-results="displaySearchResults"></search>
-    <ul>
+    <ul v-if="hasItems">
       <router-link
         v-for="(item) in itemsList"
         :key="item.id"
@@ -13,6 +13,7 @@
         <a @click="saveItemID(item.id)">{{ item.name }}</a>
       </router-link>
     </ul>
+    <h3 v-else> There are no matches in the list. Try again!</h3>
   </div>
 </template>
 
@@ -24,6 +25,7 @@ export default {
     return {
       requestedData: [],
       itemsList: [],
+      hasItems: true
     }
   },
   mounted() {
