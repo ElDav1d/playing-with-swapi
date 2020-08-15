@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <search @display-search-results="displaySearchResults"></search>
     <ul v-if="hasItems">
       <router-link
@@ -14,7 +14,7 @@
       </router-link>
     </ul>
     <h3 v-else> There are no matches in the list. Try again!</h3>
-  </div>
+  </main>
 </template>
 
 <script>
