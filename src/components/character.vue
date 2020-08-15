@@ -1,5 +1,5 @@
 <template>
-  <article class="swapi-Character_Container">
+  <article class="swapi-itemSheet_Container">
     <h1>I'm a SW character!!</h1>
     <h2>My name is {{ name }}</h2>
     <h2>I'm a {{ species }}</h2>
@@ -62,10 +62,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .swapi-Character_Container {
-    padding: 2rem;
-    border: 1px solid #ddd;
-  }
-</style>
