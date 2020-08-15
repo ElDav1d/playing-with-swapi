@@ -3,6 +3,7 @@
     <ul class="navbar-list">
       <li class="navbar-list-item"><router-link to="/">Home</router-link></li>
       <li class="navbar-list-item"><router-link to="/characters">Characters</router-link></li>
+      <li class="navbar-list-item"><router-link to="/worlds">Worlds</router-link></li>
     </ul>
   </nav>
 </template>

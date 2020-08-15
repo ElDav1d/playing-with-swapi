@@ -2,7 +2,8 @@
   <main>
     <h1 class="swapi-itemSheet_Title">{{ sectionTitle }}</h1>
     <router-view
-      v-bind:sectionTitle="sectionTitle">
+      v-bind:sectionTitle="sectionTitle"
+      :key="$route.fullPath">
     </router-view>
   </main>
 </template>
