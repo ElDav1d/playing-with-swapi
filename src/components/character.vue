@@ -47,7 +47,7 @@ export default {
          .then(response => { this.species = response.data.name; })
          .catch(error => { console.log(error); })
         } else {
-          this.species = 'humanoid';
+          this.species = 'human';
         }
         
         axios.get(homeworld)
