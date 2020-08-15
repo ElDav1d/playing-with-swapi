@@ -1,6 +1,6 @@
 <template>
   <article class="swapi-itemSheet_Container">
-    <h1>I'm a SW character!!</h1>
+    <h1>I'm a SW {{ singularizeTitle }}!!</h1>
     <h2>My name is {{ name }}</h2>
     <h2>I'm a {{ species }}</h2>
     <h2>I'm from {{ homeworld }}</h2>
@@ -27,6 +27,17 @@ export default {
   },
   mounted() {
     this.getCharacterData();
+  },
+  props: {
+    sectionTitle: {
+      type: String,
+      required: true
+    },
+  },
+  computed: {
+    singularizeTitle() {
+      return this.$props.sectionTitle.slice(0, -1);
+    }
   },
   methods: {
     getCharacterData() {

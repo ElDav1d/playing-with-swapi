@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="saveSearchValue">
-    <label>Search your character</label>
+    <label>Search your {{ singularizeTitle }}</label>
     <input
       type="text"
       placeholder="Type your search"
@@ -17,6 +17,17 @@ export default {
   data () {
     return {
       searchValue: ''
+    }
+  },
+  props: {
+    sectionTitle: {
+      type: String,
+      required: true
+    },
+  },
+  computed: {
+    singularizeTitle() {
+      return this.$props.sectionTitle.slice(0, -1);
     }
   },
   methods: {

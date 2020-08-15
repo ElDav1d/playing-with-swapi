@@ -1,6 +1,8 @@
 <template>
   <main>
-    <search @display-search-results="displaySearchResults"></search>
+    <search
+      @display-search-results="displaySearchResults" v-bind:sectionTitle="sectionTitle">
+    </search>
     <ul v-if="hasItems">
       <router-link
         v-for="(item) in itemsList"
@@ -9,7 +11,7 @@
         active-class="active"
         tag="li"
         exact
-        :to="`characters/${formatPath(item.name)}`">
+        :to="`${sectionTitle}/${formatPath(item.name)}`">
         <a @click="saveItemID(item.id)">{{ item.name }}</a>
       </router-link>
     </ul>
@@ -25,7 +27,7 @@ export default {
     return {
       requestedData: [],
       itemsList: [],
-      hasItems: true
+      hasItems: true,
     }
   },
   mounted() {
@@ -34,12 +36,22 @@ export default {
   components: {
     Search,
   },
+  props: {
+    sectionTitle: {
+      type: String,
+      required: true
+    },
+    apiPath:  {
+      type: String,
+      required: true
+    },
+  },
   methods: {
     saveItemID(id) {
       this.$store.commit('saveItemID', id);
     },
     getItemsData() {
-      let url = 'https://swapi.dev/api/people/';
+      let url = `https://swapi.dev/api/${this.$props.apiPath}/`;
       axios.get(url)
         .then(response => {
           this.requestedData = response.data.results;
@@ -47,7 +59,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
-          alert(`Sorry, something went wrong When loading this list. Please refresh the page after closing this dialog.`);
+          alert(`Sorry, something went wrong When loading this ${this.$props.sectionTitle}' list. Please refresh the page after closing this dialog.`);
         });
     },
     getAllPagesData(response, url) {

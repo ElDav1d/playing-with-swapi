@@ -3,23 +3,29 @@ import Characters from './containers/SharedContainer.vue';
 import List from './components/List.vue';
 import Character from './components/Character.vue';
 
+const charactersSectionTitle = 'characters'
+
 export const routes = [
   {
     path: '/',
     component: Home,
     props: {
-      title: 'Home'
+      sectionTitle: 'home'
     }
   },
-  { path: '/characters',
+  {
+    path: `/${charactersSectionTitle}`,
     component: Characters,
     props: {
-      title: 'Characters'
+      sectionTitle: charactersSectionTitle,
     },
     children :[
       {
         path: '',
-        component: List
+        component: List,
+        props: {
+          apiPath: 'people',
+        },
       },
       {
         path: ':name',
