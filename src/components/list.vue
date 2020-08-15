@@ -82,8 +82,15 @@ export default {
     },
     displaySearchResults() {
       this.getItemsList();
+      this.hasItems = true;
       const searchInput = this.$store.state.searchInput.toLowerCase();
       const newList = this.itemsList.filter( item => item.name.toLowerCase().indexOf(searchInput) !== -1)
+
+      if(!newList.length) {
+        this.hasItems = false;
+        return;
+      }
+
       this.itemsList = newList;
     }
   }
