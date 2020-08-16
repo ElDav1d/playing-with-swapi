@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="saveSearchValue">
-    <label>Search your character</label>
+    <label>Search your {{ singularizeTitle }}</label>
     <input
       type="text"
       placeholder="Type your search"
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { singularizeTitle } from '../mixins'
 
 export default {
   data () {
@@ -19,6 +20,9 @@ export default {
       searchValue: ''
     }
   },
+  mixins: [
+    singularizeTitle,
+  ],
   methods: {
     saveSearchValue() {
       this.$store.commit('saveSearchValue', this.searchValue);
