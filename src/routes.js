@@ -1,5 +1,5 @@
-import Home from './containers/SharedContainer.vue';
-import Characters from './containers/SharedContainer.vue';
+
+import SectionSharedContainer from './containers/SectionSharedContainer.vue';
 import List from './components/List.vue';
 import Character from './components/Character.vue';
 import World from './components/World.vue';
@@ -10,14 +10,14 @@ const worldsSectionTitle = 'worlds'
 export const routes = [
   {
     path: '/',
-    component: Home,
+    component: SectionSharedContainer,
     props: {
       sectionTitle: 'home'
     }
   },
   {
     path: `/${charactersSectionTitle}`,
-    component: Characters,
+    component: SectionSharedContainer,
     props: {
       sectionTitle: charactersSectionTitle,
     },
@@ -33,10 +33,11 @@ export const routes = [
         path: ':name',
         component: Character
       }
-  ]},
+    ]
+  },
   {
     path: `/${worldsSectionTitle}`,
-    component: Characters,
+    component: SectionSharedContainer,
     props: {
       sectionTitle: worldsSectionTitle,
     },
