@@ -4,12 +4,9 @@
     <h2>My name is {{ name }}</h2>
     <h2>My population is {{ population }}</h2>
     <h2>My climate is {{ climate }}</h2>
-    <h2>I'd appeared on this movies:</h2>
-    <ul>
-      <li v-for="film in films">
-        {{ film }}
-      </li>
-    </ul>
+    <films-sub-list
+      v-bind:films="films">
+    </films-sub-list>
     <template v-if="residents.length">
       <h2>Some of my residents have been:</h2>
       <ul>
@@ -23,6 +20,7 @@
 
 <script>
 import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
+import FilmsSubList from './FilmsSubList.vue';
 
 export default {
   data () {
@@ -37,6 +35,9 @@ export default {
   },
   mounted() {
     this.getWorldData();
+  },
+  components: {
+    FilmsSubList,
   },
   mixins: [
     singularizeTitle,
