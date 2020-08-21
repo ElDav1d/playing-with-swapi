@@ -13,7 +13,7 @@
         <li v-for="resident in residents">
           {{ resident }}
         </li>
-    </ul>
+      </ul>
     </template>
   </article>
 </template>
