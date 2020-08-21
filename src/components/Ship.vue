@@ -2,7 +2,7 @@
   <article class="swapi-itemSheet_Container">
     <h1>I'm a SW {{ singularizeTitle }}!!</h1>
     <h2>My name is {{ name }}</h2>
-    <h2>I'm  a <em>{{ model }}</em> model</h2>
+    <h2>I'm a <em>{{ model }}</em> model</h2>
     <h2>I belong to the <em>{{ starship_class }}</em> class</h2>
     <films-sub-list
       v-bind:films="films">
