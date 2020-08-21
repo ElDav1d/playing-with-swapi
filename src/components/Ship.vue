@@ -22,32 +22,44 @@
 </template>
 
 <script>
-import { singularizeTitle } from '../mixins'
+import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
 
 export default {
   data () {
     return {
       id: this.$store.state.itemID,
-      name: 'Y-wing',
-      model: 'BTL Y-wing',
-      starship_class: 'assault starfighter',
-      pilots: [
-        'http://swapi.dev/api/people/13/', 
-        'http://swapi.dev/api/people/14/', 
-        'http://swapi.dev/api/people/25/', 
-        'http://swapi.dev/api/people/31/'
-      ],
-      films: [
-        'http://swapi.dev/api/films/1/', 
-        'http://swapi.dev/api/films/2/', 
-        'http://swapi.dev/api/films/3/'
-      ], 
+      name: '',
+      model: '',
+      starship_class: '',
+      pilots: [],
+      films: [], 
     };
   },
   mounted() {
+    this.getShipData();
   },
   mixins: [
     singularizeTitle,
-  ]
+    getNestedElementsSingleValue
+  ],
+  methods: {
+    getShipData() {
+      axios.get( `https://swapi.dev/api/starships/${this.id}`)
+      .then(response => {
+        const { name, model, starship_class, pilots, films } = response.data;
+
+        this.name = name;
+        this.model = model;
+        this.starship_class = starship_class;
+        this.films = this.getNestedElementsSingleValue(films, 'title');
+        this.pilots = this.getNestedElementsSingleValue(pilots, 'name');
+      })
+      .catch(error => {
+        console.log(error);
+        alert(`Sorry, something went wrong when loading this ship. Please refresh the page after closing 
+        this dialog.`);
+      });
+    },
+  }
 }
 </script>
