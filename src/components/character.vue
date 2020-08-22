@@ -13,15 +13,17 @@
       </ul>
     </template>
     <template v-else>
-      <h1>This is not the {{ singularizeTitle }} you are looking for</h1>
-      <p>Sorry: currently we have no data for this one</p>
-      <p>Don't surrender to fear and check  it later!</p>
+      <item-sheet-error-message
+        :sectionTitle="sectionTitle">
+      </item-sheet-error-message>
     </template>
   </article>
 </template>
 
 <script>
-import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
+import { singularizeTitle, getNestedElementsSingleValue } from '../mixins';
+import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
+
 export default {
   data () {
     return {
@@ -35,6 +37,9 @@ export default {
   },
   mounted() {
     this.getCharacterData();
+  },
+  components: {
+    ItemSheetErrorMessage
   },
   mixins: [
     singularizeTitle,

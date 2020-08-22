@@ -15,9 +15,9 @@
       </characters-sub-list>
     </template>
     <template v-else>
-      <h1>This is not the {{ singularizeTitle }} you are looking for</h1>
-      <p>Sorry: currently we have no data for this one</p>
-      <p>Don't surrender to fear and check  it later!</p>
+      <item-sheet-error-message
+        :sectionTitle="sectionTitle">
+      </item-sheet-error-message>
     </template>
   </article>
 </template>
@@ -26,6 +26,7 @@
 import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
 import FilmsSubList from './shared/FilmsSubList.vue';
 import CharactersSubList from './shared/CharactersSubList.vue';
+import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
 
 export default {
   data () {
@@ -45,7 +46,8 @@ export default {
   },
   components: {
     FilmsSubList,
-    CharactersSubList
+    CharactersSubList,
+    ItemSheetErrorMessage
   },
   mixins: [
     singularizeTitle,
