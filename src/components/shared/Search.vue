@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { singularizeTitle } from '../mixins'
+import { singularizeTitle } from '../../mixins'
 
 export default {
   data () {

@@ -24,8 +24,8 @@
 
 <script>
 import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
-import FilmsSubList from './FilmsSubList.vue';
-import CharactersSubList from './CharactersSubList.vue';
+import FilmsSubList from './shared/FilmsSubList.vue';
+import CharactersSubList from './shared/CharactersSubList.vue';
 
 export default {
   data () {
