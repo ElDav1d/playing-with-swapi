@@ -18,3 +18,17 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## SWAPI 404 ERRORS
+
+When dealing with the Ships section I realized that some requests throw 404:
+
+https://swapi.dev/api/starships/1/
+https://swapi.dev/api/starships/4/
+
+It seems that this is recurrent:
+
+https://github.com/phalt/swapi/issues/96
+https://github.com/phalt/swapi/issues/97
+
+In order to finish the exercise at some point I decided to handle this lack of data in the items sheets with a 404 message. Maybe in the future I will return to this project and figure out the way to clean links to non existent data...but that's another story!

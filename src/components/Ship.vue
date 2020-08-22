@@ -1,17 +1,24 @@
 <template>
   <article class="swapi-itemSheet_Container">
-    <h1>I'm a SW {{ singularizeTitle }}!!</h1>
-    <h2>My name is {{ name }}</h2>
-    <h2>I'm a <em>{{ model }}</em> model</h2>
-    <h2>I belong to the <em>{{ starship_class }}</em> class</h2>
-    <films-sub-list
-      :films="films">
-    </films-sub-list>
-    <characters-sub-list
-      v-if="pilots.length"
-      :items="pilots"
-      :itemsName="pilotsTitle">
-    </characters-sub-list>
+    <template v-if="hasData">
+      <h1>I'm a SW {{ singularizeTitle }}!!</h1>
+      <h2>My name is {{ name }}</h2>
+      <h2>I'm a <em>{{ model }}</em> model</h2>
+      <h2>I belong to the <em>{{ starship_class }}</em> class</h2>
+      <films-sub-list
+        :films="films">
+      </films-sub-list>
+      <characters-sub-list
+        v-if="pilots.length"
+        :items="pilots"
+        :itemsName="pilotsTitle">
+      </characters-sub-list>
+    </template>
+    <template v-else>
+      <h1>This is not the {{ singularizeTitle }} you are looking for</h1>
+      <p>Sorry: currently we have no data for this one</p>
+      <p>Please check later</p>
+    </template>
   </article>
 </template>
 
@@ -29,7 +36,8 @@ export default {
       starship_class: '',
       pilots: [],
       pilotsTitle: 'pilots',
-      films: [], 
+      films: [],
+      hasData: false
     };
   },
   mounted() {
@@ -49,6 +57,7 @@ export default {
       .then(response => {
         const { name, model, starship_class, pilots, films } = response.data;
 
+        this.hasData = true;
         this.name = name;
         this.model = model;
         this.starship_class = starship_class;
@@ -57,8 +66,6 @@ export default {
       })
       .catch(error => {
         console.log(error);
-        alert(`Sorry, something went wrong when loading this ship. Please refresh the page after closing 
-        this dialog.`);
       });
     },
   }
