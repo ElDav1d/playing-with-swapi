@@ -6,11 +6,9 @@
       <h2>I'm a {{ species }}</h2>
       <h2>I'm from {{ homeworld }}</h2>
       <h2>I'd appeared on this movies:</h2>
-      <ul>
-        <li v-for="film in films">
-          {{ film }}
-        </li>
-      </ul>
+      <films-sub-list
+        :films="films">
+      </films-sub-list>
     </template>
     <template v-else>
       <item-sheet-error-message
@@ -22,6 +20,7 @@
 
 <script>
 import { singularizeTitle, getNestedElementsSingleValue } from '../mixins';
+import FilmsSubList from './shared/FilmsSubList.vue';
 import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
 
 export default {
@@ -39,6 +38,7 @@ export default {
     this.getCharacterData();
   },
   components: {
+     FilmsSubList,
     ItemSheetErrorMessage
   },
   mixins: [
@@ -51,6 +51,7 @@ export default {
         .then(response => {
           const { name, species, homeworld, films } = response.data;
 
+          this.hasData = true;
           this.name = name;
           this.films = this.getNestedElementsSingleValue(films, 'title');
 
