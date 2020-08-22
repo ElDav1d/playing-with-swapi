@@ -1,15 +1,22 @@
 <template>
   <article class="swapi-itemSheet_Container">
-    <h1>I'm a SW {{ singularizeTitle }}!!</h1>
-    <h2>My name is {{ name }}</h2>
-    <h2>I'm a {{ species }}</h2>
-    <h2>I'm from {{ homeworld }}</h2>
-    <h2>I'd appeared on this movies:</h2>
-    <ul>
-      <li v-for="film in films">
-        {{ film }}
-      </li>
-    </ul>
+    <template v-if="hasData">
+      <h1>I'm a SW {{ singularizeTitle }}!!</h1>
+      <h2>My name is {{ name }}</h2>
+      <h2>I'm a {{ species }}</h2>
+      <h2>I'm from {{ homeworld }}</h2>
+      <h2>I'd appeared on this movies:</h2>
+      <ul>
+        <li v-for="film in films">
+          {{ film }}
+        </li>
+      </ul>
+    </template>
+    <template v-else>
+      <h1>This is not the {{ singularizeTitle }} you are looking for</h1>
+      <p>Sorry: currently we have no data for this one</p>
+      <p>Don't surrender to fear and check  it later!</p>
+    </template>
   </article>
 </template>
 
@@ -22,7 +29,8 @@ export default {
       name: '',
       species: [],
       homeworld: '',
-      films: []
+      films: [],
+      hasData: false
     }
   },
   mounted() {
@@ -34,7 +42,7 @@ export default {
   ],
   methods: {
     getCharacterData() {
-      axios.get( `https://swapi.dev/api/people/${this.id}`)
+      axios.get( `https://swapi.dev/api/peowreewple/${this.id}`)
         .then(response => {
           const { name, species, homeworld, films } = response.data;
 
@@ -55,7 +63,6 @@ export default {
         })
         .catch(error => {
           console.log(error);
-          alert(`Sorry, something went wrong when loading this character. Please refresh the page after closing this dialog.`);
       });
     },
   }

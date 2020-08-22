@@ -17,7 +17,7 @@
     <template v-else>
       <h1>This is not the {{ singularizeTitle }} you are looking for</h1>
       <p>Sorry: currently we have no data for this one</p>
-      <p>Please check later</p>
+      <p>Don't surrender to fear and check  it later!</p>
     </template>
   </article>
 </template>

@@ -1,17 +1,24 @@
 <template>
   <article class="swapi-itemSheet_Container">
-    <h1>I'm a SW {{ singularizeTitle }}!!</h1>
-    <h2>My name is {{ name }}</h2>
-    <h2>My population is {{ population }}</h2>
-    <h2>My climate is {{ climate }}</h2>
-    <films-sub-list
-      :films="films">
-    </films-sub-list>
-    <characters-sub-list
-      v-if="residents.length"
-      :items="residents"
-      :itemsName="residentsTitle">
-    </characters-sub-list>
+    <template v-if="hasData">
+      <h1>I'm a SW {{ singularizeTitle }}!!</h1>
+      <h2>My name is {{ name }}</h2>
+      <h2>My population is {{ population }}</h2>
+      <h2>My climate is {{ climate }}</h2>
+      <films-sub-list
+        :films="films">
+      </films-sub-list>
+      <characters-sub-list
+        v-if="residents.length"
+        :items="residents"
+        :itemsName="residentsTitle">
+      </characters-sub-list>
+    </template>
+    <template v-else>
+      <h1>This is not the {{ singularizeTitle }} you are looking for</h1>
+      <p>Sorry: currently we have no data for this one</p>
+      <p>Don't surrender to fear and check  it later!</p>
+    </template>
   </article>
 </template>
 
@@ -29,7 +36,8 @@ export default {
       climate: 'arid',
       films: [],
       residents: [],
-      residentsTitle: 'residents'
+      residentsTitle: 'residents',
+      hasData: false
     }
   },
   mounted() {
@@ -49,6 +57,7 @@ export default {
       .then(response => {
         const { name, population, climate, films, residents } = response.data;
 
+        this.hasData = true;
         this.name = name;
         this.population = population;
         this.climate = climate;
@@ -57,8 +66,6 @@ export default {
       })
       .catch(error => {
         console.log(error);
-        alert(`Sorry, something went wrong when loading this world. Please refresh the page after closing 
-        this dialog.`);
       });
     },
   }
