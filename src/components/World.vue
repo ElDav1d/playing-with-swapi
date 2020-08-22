@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
+import { singularizeTitle, getNestedElementsSingleValue, commonSheetData } from '../mixins'
 import FilmsSubList from './shared/FilmsSubList.vue';
 import CharactersSubList from './shared/CharactersSubList.vue';
 import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
@@ -31,14 +31,10 @@ import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
 export default {
   data () {
     return {
-      id: this.$store.state.itemID,
-      name: '',
       population: '',
       climate: 'arid',
-      films: [],
       residents: [],
       residentsTitle: 'residents',
-      hasData: false
     }
   },
   mounted() {
@@ -51,7 +47,8 @@ export default {
   },
   mixins: [
     singularizeTitle,
-    getNestedElementsSingleValue
+    getNestedElementsSingleValue,
+    commonSheetData
   ],
   methods: {
     getWorldData() {

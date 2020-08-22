@@ -19,31 +19,28 @@
 </template>
 
 <script>
-import { singularizeTitle, getNestedElementsSingleValue } from '../mixins';
+import { singularizeTitle, getNestedElementsSingleValue, commonSheetData } from '../mixins';
 import FilmsSubList from './shared/FilmsSubList.vue';
 import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
 
 export default {
   data () {
     return {
-      id: this.$store.state.itemID,
-      name: '',
       species: [],
       homeworld: '',
-      films: [],
-      hasData: false
     }
   },
   mounted() {
     this.getCharacterData();
   },
   components: {
-     FilmsSubList,
+    FilmsSubList,
     ItemSheetErrorMessage
   },
   mixins: [
     singularizeTitle,
-    getNestedElementsSingleValue
+    getNestedElementsSingleValue,
+    commonSheetData 
   ],
   methods: {
     getCharacterData() {
