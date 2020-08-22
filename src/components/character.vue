@@ -42,7 +42,7 @@ export default {
   ],
   methods: {
     getCharacterData() {
-      axios.get( `https://swapi.dev/api/peowreewple/${this.id}`)
+      axios.get( `https://swapi.dev/api/people/${this.id}`)
         .then(response => {
           const { name, species, homeworld, films } = response.data;
 
