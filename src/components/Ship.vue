@@ -5,22 +5,20 @@
     <h2>I'm a <em>{{ model }}</em> model</h2>
     <h2>I belong to the <em>{{ starship_class }}</em> class</h2>
     <films-sub-list
-      v-bind:films="films">
+      :films="films">
     </films-sub-list>
-    <template v-if="pilots.length">
-      <h2>Some of my pilots have been:</h2>
-      <ul>
-        <li v-for="pilot in pilots">
-          {{ pilot }}
-        </li>
-      </ul>
-    </template>
+    <characters-sub-list
+      v-if="pilots.length"
+      :items="pilots"
+      :itemsName="pilotsTitle">
+    </characters-sub-list>
   </article>
 </template>
 
 <script>
 import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
 import FilmsSubList from './FilmsSubList.vue';
+import CharactersSubList from './CharactersSubList.vue';
 
 export default {
   data () {
@@ -30,6 +28,7 @@ export default {
       model: '',
       starship_class: '',
       pilots: [],
+      pilotsTitle: 'pilots',
       films: [], 
     };
   },
@@ -38,6 +37,7 @@ export default {
   },
   components: {
     FilmsSubList,
+    CharactersSubList
   },
   mixins: [
     singularizeTitle,

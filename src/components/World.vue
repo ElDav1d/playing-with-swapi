@@ -5,22 +5,20 @@
     <h2>My population is {{ population }}</h2>
     <h2>My climate is {{ climate }}</h2>
     <films-sub-list
-      v-bind:films="films">
+      :films="films">
     </films-sub-list>
-    <template v-if="residents.length">
-      <h2>Some of my residents have been:</h2>
-      <ul>
-        <li v-for="resident in residents">
-          {{ resident }}
-        </li>
-      </ul>
-    </template>
+    <characters-sub-list
+      v-if="residents.length"
+      :items="residents"
+      :itemsName="residentsTitle">
+    </characters-sub-list>
   </article>
 </template>
 
 <script>
 import { singularizeTitle, getNestedElementsSingleValue } from '../mixins'
 import FilmsSubList from './FilmsSubList.vue';
+import CharactersSubList from './CharactersSubList.vue';
 
 export default {
   data () {
@@ -31,6 +29,7 @@ export default {
       climate: 'arid',
       films: [],
       residents: [],
+      residentsTitle: 'residents'
     }
   },
   mounted() {
@@ -38,6 +37,7 @@ export default {
   },
   components: {
     FilmsSubList,
+    CharactersSubList
   },
   mixins: [
     singularizeTitle,
