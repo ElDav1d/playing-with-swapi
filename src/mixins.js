@@ -25,3 +25,14 @@ export const getNestedElementsSingleValue = {
     },
   },
 }
+
+export const commonSheetData = {
+  data() {
+    return {
+      id: this.$store.state.itemID,
+      name: '',
+      films: [],
+      hasData: false
+    };
+  },
+}

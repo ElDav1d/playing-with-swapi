@@ -1,7 +1,7 @@
 <template>
   <main>
     <search
-      @display-search-results="displaySearchResults" v-bind:sectionTitle="sectionTitle">
+      @display-search-results="displaySearchResults" :sectionTitle="sectionTitle">
     </search>
     <ul v-if="hasItems">
       <router-link

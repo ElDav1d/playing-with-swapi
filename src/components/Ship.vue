@@ -3,15 +3,15 @@
     <template v-if="hasData">
       <h1>I'm a SW {{ singularizeTitle }}!!</h1>
       <h2>My name is {{ name }}</h2>
-      <h2>My population is {{ population }}</h2>
-      <h2>My climate is {{ climate }}</h2>
+      <h2>I'm a <em>{{ model }}</em> model</h2>
+      <h2>I belong to the <em>{{ starship_class }}</em> class</h2>
       <films-sub-list
         :films="films">
       </films-sub-list>
       <characters-sub-list
-        v-if="residents.length"
-        :items="residents"
-        :itemsName="residentsTitle">
+        v-if="pilots.length"
+        :items="pilots"
+        :itemsName="pilotsTitle">
       </characters-sub-list>
     </template>
     <template v-else>
@@ -31,14 +31,14 @@ import ItemSheetErrorMessage from './shared/ItemSheetErrorMessage.vue';
 export default {
   data () {
     return {
-      population: '',
-      climate: 'arid',
-      residents: [],
-      residentsTitle: 'residents',
-    }
+      model: '',
+      starship_class: '',
+      pilots: [],
+      pilotsTitle: 'pilots',
+    };
   },
   mounted() {
-    this.getWorldData();
+    this.getShipData();
   },
   components: {
     FilmsSubList,
@@ -51,17 +51,17 @@ export default {
     commonSheetData
   ],
   methods: {
-    getWorldData() {
-      axios.get( `https://swapi.dev/api/planets/${this.id}`)
+    getShipData() {
+      axios.get( `https://swapi.dev/api/starships/${this.id}`)
       .then(response => {
-        const { name, population, climate, films, residents } = response.data;
+        const { name, model, starship_class, pilots, films } = response.data;
 
         this.hasData = true;
         this.name = name;
-        this.population = population;
-        this.climate = climate;
+        this.model = model;
+        this.starship_class = starship_class;
         this.films = this.getNestedElementsSingleValue(films, 'title');
-        this.residents = this.getNestedElementsSingleValue(residents, 'name');
+        this.pilots = this.getNestedElementsSingleValue(pilots, 'name');
       })
       .catch(error => {
         console.log(error);

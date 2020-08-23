@@ -1,23 +1,25 @@
-import Home from './containers/SharedContainer.vue';
-import Characters from './containers/SharedContainer.vue';
-import List from './components/List.vue';
+
+import SectionSharedContainer from './containers/SectionSharedContainer.vue';
+import List from './components/shared/List.vue';
 import Character from './components/Character.vue';
 import World from './components/World.vue';
+import Ship from './components/Ship.vue';
 
-const charactersSectionTitle = 'characters'
-const worldsSectionTitle = 'worlds'
+const charactersSectionTitle = 'characters';
+const worldsSectionTitle = 'worlds';
+const shipsSectionTitle = 'ships';
 
 export const routes = [
   {
     path: '/',
-    component: Home,
+    component: SectionSharedContainer,
     props: {
       sectionTitle: 'home'
     }
   },
   {
     path: `/${charactersSectionTitle}`,
-    component: Characters,
+    component: SectionSharedContainer,
     props: {
       sectionTitle: charactersSectionTitle,
     },
@@ -33,10 +35,11 @@ export const routes = [
         path: ':name',
         component: Character
       }
-  ]},
+    ]
+  },
   {
     path: `/${worldsSectionTitle}`,
-    component: Characters,
+    component: SectionSharedContainer,
     props: {
       sectionTitle: worldsSectionTitle,
     },
@@ -51,6 +54,26 @@ export const routes = [
       {
         path: ':name',
         component: World
+      }
+    ]
+  },
+  {
+    path: `/${shipsSectionTitle}`,
+    component: SectionSharedContainer,
+    props: {
+      sectionTitle: shipsSectionTitle,
+    },
+    children: [
+      {
+        path: '',
+        component: List,
+        props: {
+          apiPath: 'starships',
+        },
+      },
+      {
+        path: ':name',
+        component: Ship
       }
     ]
   },
