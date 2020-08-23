@@ -9,9 +9,9 @@
         :films="films">
       </films-sub-list>
       <characters-sub-list
-        v-if="residents.length"
-        :items="residents"
-        :itemsName="residentsTitle">
+        v-if="residentsUrls.length"
+        :items="residentsUrls"
+        :itemsName="residentsKeyString">
       </characters-sub-list>
     </template>
     <template v-else>
@@ -33,8 +33,8 @@ export default {
     return {
       population: '',
       climate: 'arid',
-      residents: [],
-      residentsTitle: 'residents',
+      residentsUrls: [],
+      residentsKeyString: 'residents',
     }
   },
   mounted() {
@@ -61,7 +61,7 @@ export default {
         this.population = population;
         this.climate = climate;
         this.films = this.getNestedElementsSingleValue(films, 'title');
-        this.residents = this.getNestedElementsSingleValue(residents, 'name');
+        this.residentsUrls = residents;
       })
       .catch(error => {
         console.log(error);

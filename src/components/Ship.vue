@@ -9,9 +9,9 @@
         :films="films">
       </films-sub-list>
       <characters-sub-list
-        v-if="pilots.length"
-        :items="pilots"
-        :itemsName="pilotsTitle">
+        v-if="pilotsUrls.length"
+        :items="pilotsUrls"
+        :itemsName="pilotsKeyString">
       </characters-sub-list>
     </template>
     <template v-else>
@@ -33,8 +33,8 @@ export default {
     return {
       model: '',
       starship_class: '',
-      pilots: [],
-      pilotsTitle: 'pilots',
+      pilotsUrls: [],
+      pilotsKeyString: 'pilots',
     };
   },
   mounted() {
@@ -61,7 +61,7 @@ export default {
         this.model = model;
         this.starship_class = starship_class;
         this.films = this.getNestedElementsSingleValue(films, 'title');
-        this.pilots = this.getNestedElementsSingleValue(pilots, 'name');
+        this.pilotsUrls = pilots;
       })
       .catch(error => {
         console.log(error);
