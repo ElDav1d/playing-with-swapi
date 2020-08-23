@@ -5,7 +5,7 @@
     </search>
     <ul v-if="hasItems">
       <router-link
-        v-for="(item) in itemsList"
+        v-for="item in items"
         :key="item.id"
         class="navbar-list-item"
         active-class="active"
@@ -26,7 +26,7 @@ export default {
   data () {
     return {
       requestedData: [],
-      itemsList: [],
+      items: [],
       hasItems: true,
     }
   },
@@ -74,7 +74,7 @@ export default {
           }) 
       }
       this.addIDToItems();
-      this.getItemsList();
+      this.getItems();
     },
     addIDToItems() {
       this.requestedData.forEach((item, index) => {
@@ -84,8 +84,8 @@ export default {
     formatPath(name) {
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
-    getItemsList() {
-      this.itemsList = this.requestedData.map( item => {
+    getItems() {
+      this.items = this.requestedData.map( item => {
         return {
           name : item.name,
           id: item.id
@@ -93,17 +93,17 @@ export default {
       })
     },
     displaySearchResults() {
-      this.getItemsList();
+      this.getItems();
       this.hasItems = true;
       const searchInput = this.$store.state.searchInput.toLowerCase();
-      const newList = this.itemsList.filter( item => item.name.toLowerCase().indexOf(searchInput) !== -1)
+      const filteredItems = this.items.filter( item => item.name.toLowerCase().indexOf(searchInput) > -1)
 
-      if(!newList.length) {
+      if(!filteredItems.length) {
         this.hasItems = false;
         return;
       }
 
-      this.itemsList = newList;
+      this.items = filteredItems;
     }
   }
 }
