@@ -10,7 +10,7 @@
       </films-sub-list>
       <characters-sub-list
         v-if="residentsUrls.length"
-        :items="residentsUrls"
+        :urls="residentsUrls"
         :itemsName="residentsKeyString">
       </characters-sub-list>
     </template>
