@@ -1,4 +1,3 @@
-
 import SectionSharedContainer from './containers/SectionSharedContainer.vue';
 import List from './components/shared/List.vue';
 import Character from './components/Character.vue';

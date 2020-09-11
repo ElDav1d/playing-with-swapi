@@ -11,7 +11,7 @@
         active-class="active"
         tag="li"
         exact
-        :to="`${sectionTitle}/${formatPath(item.name)}`">
+        :to="`/${sectionTitle}/${formatPath(item.name)}`">
         <a @click="saveItemID(item.id)">{{ item.name }}</a>
       </router-link>
     </ul>
