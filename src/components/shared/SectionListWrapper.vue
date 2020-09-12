@@ -1,8 +1,9 @@
 <template>
-  <main>
+  <article>
     <search
-      @display-search-results="displaySearchResults" :sectionTitle="sectionTitle">
-    </search>
+      @display-search-results="displaySearchResults"
+      :sectionTitle="sectionTitle"
+      />
     <ul v-if="hasItems">
       <router-link
         v-for="item in items"
@@ -16,11 +17,11 @@
       </router-link>
     </ul>
     <h3 v-else> There are no matches in the list. Try again!</h3>
-  </main>
+  </article>
 </template>
 
 <script>
-import Search from './search.vue';
+import Search from './Search.vue';
 
 export default {
   data () {
