@@ -1,25 +1,41 @@
 <template>
-  <article class="swapi-itemSheet_Container">
-    <template v-if="hasData">
-      <h1>I'm a SW {{ singularizeTitle }}!!</h1>
-      <h2>My name is {{ name }}</h2>
-      <h2>I'm a <em>{{ model }}</em> model</h2>
-      <h2>I belong to the <em>{{ starship_class }}</em> class</h2>
-      <films-sub-list
-        :films="films">
-      </films-sub-list>
-      <characters-sub-list
-        v-if="pilotsUrls.length"
-        :urls="pilotsUrls"
-        :itemsName="pilotsKeyString">
-      </characters-sub-list>
-    </template>
-    <template v-else>
-      <item-sheet-error-message
-        :sectionTitle="sectionTitle">
-      </item-sheet-error-message>
-    </template>
-  </article>
+<article class="swapi-itemSheet_Container">
+  <template v-if="hasData">
+    <h1>
+      I'm a SW {{ singularizeTitle }}!!
+    </h1>
+    <h2>
+      My name is {{ name }}
+    </h2>
+    <h2>
+      I'm a
+      <em>
+        {{ model }}
+      </em>
+      &nbsp;model
+    </h2>
+    <h2>
+      I belong to the
+      <em>
+        {{ starship_class }}
+      </em>
+      &nbsp;class
+    </h2>
+    <films-sub-list
+      :films="films"
+      />
+    <characters-sub-list
+      v-if="pilotsUrls.length"
+      :urls="pilotsUrls"
+      :itemsName="pilotsKeyString"
+      />
+  </template>
+  <template v-else>
+    <item-sheet-error-message
+      :sectionTitle="sectionTitle"
+      />
+  </template>
+</article>
 </template>
 
 <script>

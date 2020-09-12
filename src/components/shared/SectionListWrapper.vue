@@ -1,23 +1,28 @@
 <template>
-  <article>
-    <search
-      @display-search-results="displaySearchResults"
-      :sectionTitle="sectionTitle"
-      />
-    <ul v-if="hasItems">
-      <router-link
-        v-for="item in items"
-        :key="item.id"
-        class="navbar-list-item"
-        active-class="active"
-        tag="li"
-        exact
-        :to="`/${sectionTitle}/${formatPath(item.name)}`">
-        <a @click="saveItemID(item.id)">{{ item.name }}</a>
-      </router-link>
-    </ul>
-    <h3 v-else> There are no matches in the list. Try again!</h3>
-  </article>
+<article>
+  <search
+    @display-search-results="displaySearchResults"
+    :sectionTitle="sectionTitle"
+    />
+  <ul v-if="hasItems">
+    <router-link
+      v-for="item in items"
+      :key="item.id"
+      class="navbar-list-item"
+      active-class="active"
+      tag="li"
+      exact
+      :to="`/${sectionTitle}/${formatPath(item.name)}`"
+      >
+      <a @click="saveItemID(item.id)">
+        {{ item.name }}
+      </a>
+    </router-link>
+  </ul>
+  <h3 v-else>
+    There are no matches in the list. Try again!
+  </h3>
+</article>
 </template>
 
 <script>
