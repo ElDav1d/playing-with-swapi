@@ -1,25 +1,35 @@
 <template>
-  <section>
-    <h2>Some of my {{ itemsName }} have been:</h2>
-    <ul>
-      <li v-for="item in items">
-        {{ item.id }}
-        {{ item.name }}
-        <br>
-      </li>
-    </ul>
-  </section>
+<section>
+  <h2>
+    Some of my {{ itemsName }} have been:
+  </h2>
+  <ul>
+    <linked-item
+      v-for="item in items"
+      :key="item.id"
+      :sectionTitle="sectionTitle"
+      :item="item"
+      />
+  </ul>
+</section>
 </template>
 
 <script>
+import LinkedItem from './LinkedItem.vue';
+
+
 export default {
   data() {
     return {
       items: [],
+      sectionTitle: 'characters'
     }
   },
   mounted() {
     this.getItems(this.$props.urls);
+  },
+  components: {
+    LinkedItem
   },
   props: {
     urls: {
@@ -52,7 +62,7 @@ export default {
       item = item.split('/')
         .filter((element) => element != "")
       return item[item.length - 1];
-    }
+    },
   }
 }
 </script>

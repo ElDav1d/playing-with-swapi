@@ -1,5 +1,5 @@
 import SectionSharedContainer from './containers/SectionSharedContainer.vue';
-import SectionListWrapper from './components/shared/SectionListWrapper.vue';
+import SectionList from './components/shared/SectionList.vue';
 import Character from './components/Character.vue';
 import World from './components/World.vue';
 import Ship from './components/Ship.vue';
@@ -25,7 +25,7 @@ export const routes = [
     children :[
       {
         path: '',
-        component: SectionListWrapper,
+        component: SectionList,
         props: {
           apiPath: 'people',
         },
@@ -45,7 +45,7 @@ export const routes = [
     children: [
       {
         path: '',
-        component: SectionListWrapper,
+        component: SectionList,
         props: {
           apiPath: 'planets',
         },
@@ -65,7 +65,7 @@ export const routes = [
     children: [
       {
         path: '',
-        component: SectionListWrapper,
+        component: SectionList,
         props: {
           apiPath: 'starships',
         },

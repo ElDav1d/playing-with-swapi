@@ -5,19 +5,12 @@
     :sectionTitle="sectionTitle"
     />
   <ul v-if="hasItems">
-    <router-link
+    <linked-item
       v-for="item in items"
       :key="item.id"
-      class="navbar-list-item"
-      active-class="active"
-      tag="li"
-      exact
-      :to="`/${sectionTitle}/${formatPath(item.name)}`"
-      >
-      <a @click="saveItemID(item.id)">
-        {{ item.name }}
-      </a>
-    </router-link>
+      :sectionTitle="sectionTitle"
+      :item="item"
+      />
   </ul>
   <h3 v-else>
     There are no matches in the list. Try again!
@@ -27,6 +20,7 @@
 
 <script>
 import Search from './Search.vue';
+import LinkedItem from './LinkedItem.vue';
 
 export default {
   data () {
@@ -41,6 +35,7 @@ export default {
   },
   components: {
     Search,
+    LinkedItem
   },
   props: {
     sectionTitle: {
