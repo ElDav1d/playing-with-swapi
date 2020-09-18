@@ -1,8 +1,8 @@
 import SectionSharedContainer from './containers/SectionSharedContainer.vue';
 import SectionList from './components/shared/SectionList.vue';
-import Character from './components/Character.vue';
-import World from './components/World.vue';
-import Ship from './components/Ship.vue';
+import CharacterSheet from './components/CharacterSheet.vue';
+import WorldSheet from './components/WorldSheet.vue';
+import ShipSheet from './components/ShipSheet.vue';
 
 const charactersSectionTitle = 'characters';
 const worldsSectionTitle = 'worlds';
@@ -32,7 +32,7 @@ export const routes = [
       },
       {
         path: ':name',
-        component: Character
+        component: CharacterSheet
       }
     ]
   },
@@ -52,7 +52,7 @@ export const routes = [
       },
       {
         path: ':name',
-        component: World
+        component: WorldSheet
       }
     ]
   },
@@ -72,7 +72,7 @@ export const routes = [
       },
       {
         path: ':name',
-        component: Ship
+        component: ShipSheet
       }
     ]
   },
