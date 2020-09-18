@@ -1,6 +1,6 @@
 <template>
 <article>
-  <search
+  <search-input
     @display-search-results="displaySearchResults"
     :sectionTitle="sectionTitle"
     />
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Search from './Search.vue';
+import SearchInput from './SearchInput.vue';
 import LinkedItem from './LinkedItem.vue';
 
 export default {
@@ -34,7 +34,7 @@ export default {
     this.getItemsData();
   },
   components: {
-    Search,
+    SearchInput,
     LinkedItem
   },
   props: {
