@@ -1,32 +1,32 @@
 <template>
-  <main>
-    <search
-      @display-search-results="displaySearchResults" :sectionTitle="sectionTitle">
-    </search>
-    <ul v-if="hasItems">
-      <router-link
-        v-for="(item) in itemsList"
-        :key="item.id"
-        class="navbar-list-item"
-        active-class="active"
-        tag="li"
-        exact
-        :to="`${sectionTitle}/${formatPath(item.name)}`">
-        <a @click="saveItemID(item.id)">{{ item.name }}</a>
-      </router-link>
-    </ul>
-    <h3 v-else> There are no matches in the list. Try again!</h3>
-  </main>
+<article>
+  <search
+    @display-search-results="displaySearchResults"
+    :sectionTitle="sectionTitle"
+    />
+  <ul v-if="hasItems">
+    <linked-item
+      v-for="item in items"
+      :key="item.id"
+      :sectionTitle="sectionTitle"
+      :item="item"
+      />
+  </ul>
+  <h3 v-else>
+    There are no matches in the list. Try again!
+  </h3>
+</article>
 </template>
 
 <script>
-import Search from './search.vue';
+import Search from './Search.vue';
+import LinkedItem from './LinkedItem.vue';
 
 export default {
   data () {
     return {
       requestedData: [],
-      itemsList: [],
+      items: [],
       hasItems: true,
     }
   },
@@ -35,6 +35,7 @@ export default {
   },
   components: {
     Search,
+    LinkedItem
   },
   props: {
     sectionTitle: {
@@ -74,7 +75,7 @@ export default {
           }) 
       }
       this.addIDToItems();
-      this.getItemsList();
+      this.getItems();
     },
     addIDToItems() {
       this.requestedData.forEach((item, index) => {
@@ -84,8 +85,8 @@ export default {
     formatPath(name) {
       return name.replace(/[\s]+/g, '-').toLowerCase();
     },
-    getItemsList() {
-      this.itemsList = this.requestedData.map( item => {
+    getItems() {
+      this.items = this.requestedData.map( item => {
         return {
           name : item.name,
           id: item.id
@@ -93,17 +94,17 @@ export default {
       })
     },
     displaySearchResults() {
-      this.getItemsList();
+      this.getItems();
       this.hasItems = true;
       const searchInput = this.$store.state.searchInput.toLowerCase();
-      const newList = this.itemsList.filter( item => item.name.toLowerCase().indexOf(searchInput) !== -1)
+      const filteredItems = this.items.filter( item => item.name.toLowerCase().indexOf(searchInput) > -1)
 
-      if(!newList.length) {
+      if(!filteredItems.length) {
         this.hasItems = false;
         return;
       }
 
-      this.itemsList = newList;
+      this.items = filteredItems;
     }
   }
 }

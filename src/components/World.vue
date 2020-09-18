@@ -1,25 +1,33 @@
 <template>
-  <article class="swapi-itemSheet_Container">
-    <template v-if="hasData">
-      <h1>I'm a SW {{ singularizeTitle }}!!</h1>
-      <h2>My name is {{ name }}</h2>
-      <h2>My population is {{ population }}</h2>
-      <h2>My climate is {{ climate }}</h2>
-      <films-sub-list
-        :films="films">
-      </films-sub-list>
-      <characters-sub-list
-        v-if="residents.length"
-        :items="residents"
-        :itemsName="residentsTitle">
-      </characters-sub-list>
-    </template>
-    <template v-else>
-      <item-sheet-error-message
-        :sectionTitle="sectionTitle">
-      </item-sheet-error-message>
-    </template>
-  </article>
+<article class="swapi-itemSheet_Container">
+  <template v-if="hasData">
+    <h1>
+      I'm a SW {{ singularizeTitle }}!!
+    </h1>
+    <h2>
+      My name is {{ name }}
+    </h2>
+    <h2>
+      My population is {{ population }}
+    </h2>
+    <h2>
+      My climate is {{ climate }}
+    </h2>
+    <films-sub-list
+      :films="films"
+      />
+    <characters-sub-list
+      v-if="residentsUrls.length"
+      :urls="residentsUrls"
+      :itemsName="residentsKeyString"
+      />
+  </template>
+  <template v-else>
+    <item-sheet-error-message
+      :sectionTitle="sectionTitle"
+      />
+  </template>
+</article>
 </template>
 
 <script>
@@ -33,8 +41,8 @@ export default {
     return {
       population: '',
       climate: 'arid',
-      residents: [],
-      residentsTitle: 'residents',
+      residentsUrls: [],
+      residentsKeyString: 'residents',
     }
   },
   mounted() {
@@ -61,7 +69,7 @@ export default {
         this.population = population;
         this.climate = climate;
         this.films = this.getNestedElementsSingleValue(films, 'title');
-        this.residents = this.getNestedElementsSingleValue(residents, 'name');
+        this.residentsUrls = residents;
       })
       .catch(error => {
         console.log(error);
