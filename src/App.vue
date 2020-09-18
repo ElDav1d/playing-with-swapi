@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <app-navigation></app-navigation>
+    <main-navigation></main-navigation>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import AppNavigation from './components/shared/Navigation.vue';
+import MainNavigation from './components/shared/MainNavigation.vue';
 
 export default {
   name: 'app',
   components: {
-    AppNavigation,
+    MainNavigation,
   }
 }
 </script>
