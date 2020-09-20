@@ -7,20 +7,8 @@
     <h2>
       My name is {{ name }}
     </h2>
-    <h2>
-      I'm a
-      <em>
-        {{ model }}
-      </em>
-      &nbsp;model
-    </h2>
-    <h2>
-      I belong to the
-      <em>
-        {{ starship_class }}
-      </em>
-      &nbsp;class
-    </h2>
+    <h2 v-html="modelString"></h2>
+    <h2 v-html="classString"></h2>
     <films-sub-list
       :films="films"
     />
@@ -83,6 +71,14 @@ export default {
         console.log(error);
       });
     },
+  },
+  computed: {
+    modelString() {
+      return `I'm a <em>${this.model}</em> model`;
+    },
+    classString() {
+      return `I belong to the <em>${this.starship_class}</em> class`;
+    }
   }
 }
 </script>
