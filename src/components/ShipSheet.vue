@@ -23,17 +23,17 @@
     </h2>
     <films-sub-list
       :films="films"
-      />
+    />
     <characters-sub-list
       v-if="pilotsUrls.length"
       :urls="pilotsUrls"
       :itemsName="pilotsKeyString"
-      />
+    />
   </template>
   <template v-else>
     <item-sheet-error-message
       :sectionTitle="sectionTitle"
-      />
+    />
   </template>
 </article>
 </template>

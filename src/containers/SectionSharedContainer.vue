@@ -6,7 +6,7 @@
   <router-view
     :sectionTitle="sectionTitle"
     :key="$route.fullPath"
-    />
+  />
 </main>
 </template>
 

@@ -15,17 +15,17 @@
     </h2>
     <films-sub-list
       :films="films"
-      />
+    />
     <characters-sub-list
       v-if="residentsUrls.length"
       :urls="residentsUrls"
       :itemsName="residentsKeyString"
-      />
+    />
   </template>
   <template v-else>
     <item-sheet-error-message
       :sectionTitle="sectionTitle"
-      />
+    />
   </template>
 </article>
 </template>

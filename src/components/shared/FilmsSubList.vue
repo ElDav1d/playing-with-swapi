@@ -6,7 +6,7 @@
   <ul>
     <li
       v-for="film in films"
-      >
+    >
       {{ film }}
     </li>
   </ul>

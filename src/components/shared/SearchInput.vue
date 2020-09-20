@@ -8,7 +8,7 @@
     placeholder="Type your search"
     v-model="searchValue"
     @keyup.enter="saveSearchValue"
-    />
+  />
   <button
     type="submit"
     >
