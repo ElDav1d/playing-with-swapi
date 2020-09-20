@@ -16,18 +16,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import 'assets/stylesheets/foundation/config.scss';
+
+body {
+  color: $white;
+  background-color: $black;
+}
+
+h1, h2 {
+  color: $yellow;
+  font-weight: normal;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
 }
 
 a {
