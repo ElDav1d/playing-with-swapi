@@ -3,14 +3,14 @@
   <search-input
     @display-search-results="displaySearchResults"
     :sectionTitle="sectionTitle"
-    />
+  />
   <ul v-if="hasItems">
     <linked-item
       v-for="item in items"
       :key="item.id"
       :sectionTitle="sectionTitle"
       :item="item"
-      />
+    />
   </ul>
   <h3 v-else>
     There are no matches in the list. Try again!

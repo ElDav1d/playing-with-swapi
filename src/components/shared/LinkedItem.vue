@@ -5,7 +5,7 @@
   tag="li"
   exact
   :to="`/${sectionTitle}/${formatPath(item.name)}`"
-  >
+>
   <a @click="saveItemID(item.id)">
     {{ item.name }}
   </a>

@@ -18,12 +18,12 @@
     </h2>
     <films-sub-list
       :films="films"
-      />
+    />
   </template>
   <template v-else>
     <item-sheet-error-message
       :sectionTitle="sectionTitle"
-      />
+    />
   </template>
 </article>
 </template>

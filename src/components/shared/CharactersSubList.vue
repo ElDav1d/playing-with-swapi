@@ -9,7 +9,7 @@
       :key="item.id"
       :sectionTitle="sectionTitle"
       :item="item"
-      />
+    />
   </ul>
 </section>
 </template>
