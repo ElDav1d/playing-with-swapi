@@ -4,21 +4,24 @@
 body {
   color: $white;
   background-color: $black;
-}
-
-h1, h2 {
-  color: $yellow;
-  font-weight: normal;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: $font-size-default;
+  font-family: $font-family-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 60px;
 }
 
+// ---------------------------
+// Typography
+// ---------------------------
+
+h1, h2 {
+  color: $white;
+  font-family: $font-family-secondary;
+  font-weight: normal;
+}
+
 a {
-  color: #42b983;
+  color: $yellow;
 }
