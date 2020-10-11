@@ -12,16 +12,26 @@ body {
   margin-top: 60px;
 }
 
-// ---------------------------
-// Typography
-// ---------------------------
-
 h1, h2 {
   color: $white;
   font-family: $font-family-secondary;
   font-weight: normal;
+  text-transform: capitalize;
 }
 
 a {
   color: $yellow;
+label {
+  display: block;
+  margin-bottom: .75rem;
+}
+
+input {
+  padding: .25rem;
+  max-width: 250px;
+}
+
+.swapi-itemSheet_Container {
+  padding: 2rem;
+  border: 1px solid #ddd;
 }

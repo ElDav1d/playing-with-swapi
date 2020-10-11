@@ -37,16 +37,3 @@ export default {
   }
 }
 </script>
-
-<style>
-label {
-  display: block;
-  margin-bottom: .75rem;
-}
-
-input {
-  padding: .25rem;
-  max-width: 250px;
-}
-
-</style>
