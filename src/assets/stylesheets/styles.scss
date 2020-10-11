@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 60px;
+  margin: 0;
 }
 
 h1, h2 {
@@ -17,10 +17,21 @@ h1, h2 {
   font-family: $font-family-secondary;
   font-weight: normal;
   text-transform: capitalize;
+
+  @include mq(L) {
+    font-size: $font-size-xxl;
+  }
 }
 
 a {
   color: $yellow;
+  text-decoration: none;
+
+  &.router-link-active {
+    color: $blue;
+  }
+}
+
 label {
   display: block;
   margin-bottom: .75rem;

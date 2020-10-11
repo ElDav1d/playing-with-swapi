@@ -109,18 +109,3 @@ export default {
   }
 }
 </script>
-
-<style>
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 250px;
-}
-
-li {
-  border: 1px solid #ddd;
-  padding: .75rem;
-  margin: 0 10px;
-}
-</style>
