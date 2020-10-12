@@ -4,7 +4,10 @@
     @display-search-results="displaySearchResults"
     :sectionTitle="sectionTitle"
   />
-  <ul v-if="hasItems">
+  <ul
+    v-if="hasItems"
+    class="SectionList"
+  >
     <linked-item
       v-for="item in items"
       :key="item.id"
@@ -109,3 +112,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
+
+.SectionList {
+  @extend %is-clean-list;
+  margin-bottom: 2rem;
+
+  @include mq(S) {
+    max-width: 70vw;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(M) {
+    max-width: 50vw;
+    margin-bottom: 4rem;
+  }
+
+  @include mq(L) {
+    max-width: 35vw;
+  }
+}
+</style>
