@@ -32,3 +32,12 @@
   padding: 0;
   margin: 0;
 }
+
+%is-sheet-container {
+  padding: $spacing-l;
+  border: $border;
+  
+  @include mq(M) {
+    padding: $spacing-xl;
+  }
+}
