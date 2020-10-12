@@ -1,9 +1,9 @@
 <template>
 <article class="swapi-itemSheet_Container">
   <template v-if="hasData">
-    <h1>
+    <h2>
       I'm a SW {{ singularizeTitle }}!!
-    </h1>
+    </h2>
     <h2>
       My name is {{ name }}
     </h2>

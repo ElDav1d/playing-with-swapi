@@ -1,8 +1,8 @@
 <template>
 <section>
-  <h1>
+  <h2>
     This is not the {{ singularizeTitle }} you are looking for
-  </h1>
+  </h2>
   <p>
     Sorry: currently we have no data for this one
   </p>
