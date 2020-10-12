@@ -1,9 +1,9 @@
-@import '../../../assets/stylesheets/foundation/config';
+
 @import '../../../assets/stylesheets/foundation/helpers';
 
 .MainNavigation {
   border-bottom: 1px solid $white;
-  margin-bottom: $spacing-m;
+  margin-bottom: $spacing-l;
 
   &_List {
     @extend %is-clean-list ;

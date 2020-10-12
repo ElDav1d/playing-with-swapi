@@ -33,6 +33,12 @@
   margin: 0;
 }
 
+%is-vertical-list-item {
+  &:not(:last-child) {
+    margin-bottom: $spacing-l;
+  }
+}
+
 %has-linked-items {
   @include mq(S) {
     width: 75%;
@@ -52,7 +58,7 @@
 %is-sheet-container {
   padding: $spacing-l;
   border: $border;
-  
+
   @include mq(M) {
     padding: $spacing-xl;
   }

@@ -41,6 +41,7 @@ export default {
 @import '../../assets/stylesheets/foundation/helpers';
 
 .LinkedItem {
+  @extend %is-vertical-list-item;
   padding: $spacing-s;
   border: $border;
 }

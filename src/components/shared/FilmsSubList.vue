@@ -4,7 +4,10 @@
     I'd appeared on this movies:
   </h2>
   <ul class="FilmsSubList">
-    <li v-for="film in films">
+    <li
+      v-for="film in films"
+      class="FilmsSubList_Item"
+    >
       <h3>
         {{ film }}
       </h3>
@@ -28,5 +31,9 @@ export default {
 
 .FilmsSubList {
   @extend %is-clean-list;
+
+  &_Item {
+    @extend %is-vertical-list-item;
+  }
 }
 </style>
