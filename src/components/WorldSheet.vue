@@ -1,18 +1,20 @@
 <template>
-<article class="swapi-itemSheet_Container">
+<article class="WorldSheet">
   <template v-if="hasData">
     <h2>
       I'm a SW {{ singularizeTitle }}!!
     </h2>
-    <h2>
-      My name is {{ name }}
-    </h2>
-    <h2>
-      My population is {{ population }}
-    </h2>
-    <h2>
-      My climate is {{ climate }}
-    </h2>
+    <section>
+      <h3>
+        My name is {{ name }}
+      </h3>
+      <h3>
+        My population is {{ population }}
+      </h3>
+      <h3>
+        My climate is {{ climate }}
+      </h3>
+    </section>
     <films-sub-list
       v-if="films.length"
       :films="films"
@@ -79,3 +81,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../assets/stylesheets/foundation/helpers.scss';
+
+.WorldSheet {
+  @extend %is-sheet-container;
+}
+</style>
