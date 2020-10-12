@@ -1,0 +1,76 @@
+@import 'foundation/helpers';
+
+body {
+  color: $white;
+  background-color: $black;
+  font-size: $font-size-default;
+  font-family: $font-family-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: 0;
+}
+
+main {
+  padding: $spacing-m;
+  
+  @include mq(M) {
+    max-width: 75vw;
+    margin: auto;
+    padding: 0;
+  }
+
+  @include mq(L) {
+    max-width: 60vw;
+  }
+}
+
+section {
+  &:not(:last-child) {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: $font-family-secondary;
+}
+
+h1 {
+  margin-bottom: $spacing-l;
+  font-size: $font-size-xxl;
+  text-transform: capitalize;
+}
+
+h2 {
+  margin-bottom: $spacing-m;
+  font-size: $font-size-xl;
+}
+
+h3 {
+  font-size: $font-size-l;
+  font-weight: normal;
+
+  &:not(:last-child) {
+    margin-bottom: $spacing-s;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $yellow;
+  text-decoration: none;
+
+  &.router-link-active {
+    color: $blue;
+  }
+}

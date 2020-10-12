@@ -1,0 +1,44 @@
+@import '../../../assets/stylesheets/foundation/helpers';
+
+.MainNavigation {
+  position: fixed;
+  width:100%;
+  bottom: 0;
+  background-color: $black;
+  border-top: $border;
+  
+  @include mq(M) {
+    position: relative;
+    margin-bottom: $spacing-l;
+    border-bottom: $border;
+    border-top: none;
+  }
+
+  &_List {
+    @extend %is-clean-list ;
+    display: flex;
+    justify-content: space-evenly;
+
+    @include mq(S) {
+      max-width: 60vw;
+      margin: auto;
+    }
+
+    @include mq(L) {
+      max-width: 30vw;
+    }
+
+    &Item {
+      padding: $spacing-s;
+      margin: $spacing-xs;
+
+      @include mq(M) {
+        font-size: $font-size-m;
+      }
+
+      @include mq(L) {
+        font-size: $font-size-l;
+      }
+    }
+  }
+}

@@ -1,22 +1,22 @@
 <template>
-<article class="swapi-itemSheet_Container">
+<article class="CharacterSheet">
   <template v-if="hasData">
-    <h1>
+    <h2>
       I'm a SW {{ singularizeTitle }}!!
-    </h1>
-    <h2>
-      My name is {{ name }}
     </h2>
-    <h2>
-      I'm a {{ species }}
-    </h2>
-    <h2>
-      I'm from {{ homeworld }}
-    </h2>
-    <h2>
-      I'd appeared on this movies:
-    </h2>
+    <section>
+      <h3>
+        My name is {{ name }}
+      </h3>
+      <h3>
+        I'm a {{ species }}
+      </h3>
+      <h3>
+        I'm from {{ homeworld }}
+      </h3>
+    </section>
     <films-sub-list
+      v-if="films.length"
       :films="films"
     />
   </template>
@@ -81,3 +81,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../assets/stylesheets/foundation/helpers';
+
+.CharacterSheet {
+  @extend %is-sheet-container;
+}
+</style>

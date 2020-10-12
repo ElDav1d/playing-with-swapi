@@ -3,7 +3,7 @@
   <h2>
     Some of my {{ itemsName }} have been:
   </h2>
-  <ul>
+  <ul class="CharacterSubList">
     <linked-item
       v-for="item in items"
       :key="item.id"
@@ -66,3 +66,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
+
+.CharacterSubList {
+  @extend %is-clean-list;
+  @extend %goes-narrow;
+  margin-top: $spacing-xl;
+}
+</style>

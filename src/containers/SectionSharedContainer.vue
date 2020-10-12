@@ -1,6 +1,6 @@
 <template>
 <main>
-  <h1 class="swapi-itemSheet_Title">
+  <h1>
     {{ sectionTitle }}
   </h1>
   <router-view
@@ -18,14 +18,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.swapi-itemSheet_Title {
-  text-transform: capitalize;
-}
-
-.swapi-itemSheet_Container {
-  padding: 2rem;
-  border: 1px solid #ddd;
-}
-</style>

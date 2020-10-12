@@ -1,16 +1,17 @@
 <template>
 <form @submit.prevent="saveSearchValue">
-  <label>
+  <label class="SearchInput_Label">
     Search your {{ singularizeTitle }}
   </label>
   <input
     type="text"
-    placeholder="Type your search"
     v-model="searchValue"
     @keyup.enter="saveSearchValue"
+    class="SearchInput_Field"
   />
   <button
     type="submit"
+    class="SearchInput_Button"
     >
     Submit your search
   </button>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { singularizeTitle } from '../../mixins'
+import { singularizeTitle } from '../../../mixins'
 
 export default {
   data () {
@@ -38,15 +39,6 @@ export default {
 }
 </script>
 
-<style>
-label {
-  display: block;
-  margin-bottom: .75rem;
-}
-
-input {
-  padding: .25rem;
-  max-width: 250px;
-}
-
+<style lang="scss">
+@import './search-input.scss';
 </style>

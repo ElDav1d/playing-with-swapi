@@ -1,15 +1,18 @@
 <template>
-<article class="swapi-itemSheet_Container">
+<article class="ShipSheet">
   <template v-if="hasData">
-    <h1>
-      I'm a SW {{ singularizeTitle }}!!
-    </h1>
     <h2>
-      My name is {{ name }}
+      I'm a SW {{ singularizeTitle }}!!
     </h2>
-    <h2 v-html="modelString"></h2>
-    <h2 v-html="classString"></h2>
+    <section>
+      <h3>
+        My name is {{ name }}
+      </h3>
+      <h3 v-html="modelString"></h3>
+      <h3 v-html="classString"></h3>
+    </section>
     <films-sub-list
+      v-if="films.length"
       :films="films"
     />
     <characters-sub-list
@@ -82,3 +85,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../assets/stylesheets/foundation/helpers';
+
+.ShipSheet {
+  @extend %is-sheet-container;
+}
+</style>

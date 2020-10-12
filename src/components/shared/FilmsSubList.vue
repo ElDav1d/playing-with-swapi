@@ -3,11 +3,14 @@
   <h2>
     I'd appeared on this movies:
   </h2>
-  <ul>
+  <ul class="FilmsSubList">
     <li
       v-for="film in films"
+      class="FilmsSubList_Item"
     >
-      {{ film }}
+      <h3>
+        {{ film }}
+      </h3>
     </li>
   </ul>
 </section>
@@ -23,3 +26,14 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
+
+.FilmsSubList {
+  @extend %is-clean-list;
+
+  &_Item {
+    @extend %is-vertical-list-item;
+  }
+}
+</style>

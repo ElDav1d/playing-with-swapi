@@ -4,7 +4,10 @@
     @display-search-results="displaySearchResults"
     :sectionTitle="sectionTitle"
   />
-  <ul v-if="hasItems">
+  <ul
+    v-if="hasItems"
+    class="SectionList"
+  >
     <linked-item
       v-for="item in items"
       :key="item.id"
@@ -19,7 +22,7 @@
 </template>
 
 <script>
-import SearchInput from './SearchInput.vue';
+import SearchInput from './SearchInput/SearchInput.vue';
 import LinkedItem from './LinkedItem.vue';
 
 export default {
@@ -110,17 +113,13 @@ export default {
 }
 </script>
 
-<style>
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 250px;
-}
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
 
-li {
-  border: 1px solid #ddd;
-  padding: .75rem;
-  margin: 0 10px;
+.SectionList {
+  @extend %is-clean-list;
+  @extend %goes-narrow;
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-xxl;
 }
 </style>

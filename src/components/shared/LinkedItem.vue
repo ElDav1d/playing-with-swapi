@@ -1,14 +1,16 @@
 <template>
 <router-link
-  class="navbar-list-item"
+  class="LinkedItem"
   active-class="active"
   tag="li"
   exact
   :to="`/${sectionTitle}/${formatPath(item.name)}`"
 >
-  <a @click="saveItemID(item.id)">
-    {{ item.name }}
-  </a>
+  <h3>
+    <a @click="saveItemID(item.id)">
+      {{ item.name }}
+    </a>
+  </h3>
 </router-link>
 </template>
 
@@ -34,3 +36,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
+
+.LinkedItem {
+  @extend %is-vertical-list-item;
+  padding: $spacing-s;
+  border: $border;
+}
+</style>
