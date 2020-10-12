@@ -14,6 +14,7 @@
       My climate is {{ climate }}
     </h2>
     <films-sub-list
+      v-if="films.length"
       :films="films"
     />
     <characters-sub-list

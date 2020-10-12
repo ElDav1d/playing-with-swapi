@@ -14,6 +14,7 @@
       I'm from {{ homeworld }}
     </h2>
     <films-sub-list
+      v-if="films.length"
       :films="films"
     />
   </template>
