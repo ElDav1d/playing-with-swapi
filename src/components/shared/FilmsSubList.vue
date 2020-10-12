@@ -23,3 +23,10 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
+
+.FilmsSubList {
+  @extend %is-clean-list;
+}
+</style>

@@ -6,9 +6,11 @@
   exact
   :to="`/${sectionTitle}/${formatPath(item.name)}`"
 >
-  <a @click="saveItemID(item.id)">
-    {{ item.name }}
-  </a>
+  <h3>
+    <a @click="saveItemID(item.id)">
+      {{ item.name }}
+    </a>
+  </h3>
 </router-link>
 </template>
 
@@ -39,16 +41,7 @@ export default {
 @import '../../assets/stylesheets/foundation/helpers';
 
 .LinkedItem {
-  font-size: $font-size-m;
   padding: $spacing-s;
-  border: 1px solid $white;
-  
-  &:not(:last-child) {
-    margin-bottom: $spacing-l;
-
-    @include mq(M) {
-      margin-bottom: $spacing-xl;
-    }
-  }
+  border: $border;
 }
 </style>

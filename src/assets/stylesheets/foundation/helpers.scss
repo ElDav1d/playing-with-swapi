@@ -33,6 +33,22 @@
   margin: 0;
 }
 
+%has-linked-items {
+  @include mq(S) {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(M) {
+    width: 50%;
+  }
+
+  @include mq(L) {
+    width: 35%;
+  }
+}
+
 %is-sheet-container {
   padding: $spacing-l;
   border: $border;

@@ -114,26 +114,16 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/stylesheets/foundation/config';
 @import '../../assets/stylesheets/foundation/helpers';
 
 .SectionList {
   @extend %is-clean-list;
+  @extend %has-linked-items;
+  margin-top: $spacing-xl;
   margin-bottom: $spacing-xl;
 
-  @include mq(S) {
-    max-width: 70vw;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
   @include mq(M) {
-    max-width: 50vw;
     margin-bottom: $spacing-xxl;
-  }
-
-  @include mq(L) {
-    max-width: 35vw;
   }
 }
 </style>
