@@ -12,6 +12,19 @@ body {
   margin: 0;
 }
 
+main {
+  margin: 0 1rem;
+  
+  @include mq(M) {
+    max-width: 75vw;
+    margin: auto;
+  }
+
+  @include mq(L) {
+    max-width: 60vw;
+  }
+}
+
 h1, h2 {
   color: $white;
   font-family: $font-family-secondary;
