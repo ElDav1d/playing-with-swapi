@@ -3,7 +3,7 @@
 
 .MainNavigation {
   border-bottom: 1px solid $white;
-  margin-bottom: 1rem;
+  margin-bottom: $spacing-m;
 
   &_List {
     @extend %is-clean-list ;
@@ -20,7 +20,7 @@
     }
 
     &Item {
-      margin: 1rem;
+      margin: $spacing-m;
 
       @include mq(M) {
         font-size: $font-size-m;

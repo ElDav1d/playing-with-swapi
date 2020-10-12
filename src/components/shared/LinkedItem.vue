@@ -40,15 +40,15 @@ export default {
 @import '../../assets/stylesheets/foundation/config';
 
 .LinkedItem {
-  font-size: $font-size-l;
-  padding: .75rem;
+  font-size: $font-size-m;
+  padding: $spacing-s;
   border: 1px solid $white;
   
   &:not(:last-child) {
-    margin-bottom: 1.25rem;
+    margin-bottom: $spacing-l;
 
     @include mq(M) {
-      margin-bottom: 2rem;
+      margin-bottom: $spacing-xl;
     }
   }
 }

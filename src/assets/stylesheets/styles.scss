@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  margin: 0 1rem;
+  margin: 0 $spacing-m;
   
   @include mq(M) {
     max-width: 75vw;
@@ -47,15 +47,15 @@ a {
 
 label {
   display: block;
-  margin-bottom: .75rem;
+  margin-bottom: $spacing-s;
 }
 
 input {
-  padding: .25rem;
+  padding: $spacing-xs;
   max-width: 250px;
 }
 
 .swapi-itemSheet_Container {
-  padding: 2rem;
+  padding: $spacing-xl;
   border: 1px solid #ddd;
 }

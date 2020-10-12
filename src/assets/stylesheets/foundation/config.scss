@@ -15,7 +15,18 @@ $font-family-primary: 'Reem Kufi', Helvetica, Arial, sans-serif;
 $font-family-secondary: 'Russo One', Helvetica, Arial, sans-serif;
 
 $font-size-default: 16px;
-$font-size-m: 1.2rem !default;
-$font-size-l: 1.4rem !default;
-$font-size-xl: 1.6rem !default;
-$font-size-xxl: 2rem !default;
+$font-size-m: 1.2rem;
+$font-size-l: 1.4rem;
+$font-size-xl: 1.6rem;
+$font-size-xxl: 2.2rem;
+
+// ---------------------------
+// Spacing
+// ---------------------------
+
+$spacing-xs: .25rem;
+$spacing-s: .75rem;
+$spacing-m: 1rem;
+$spacing-l: 1.25rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 4rem;
