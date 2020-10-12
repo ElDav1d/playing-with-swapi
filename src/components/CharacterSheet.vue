@@ -13,9 +13,6 @@
     <h2>
       I'm from {{ homeworld }}
     </h2>
-    <h2>
-      I'd appeared on this movies:
-    </h2>
     <films-sub-list
       :films="films"
     />
