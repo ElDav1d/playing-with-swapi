@@ -3,11 +3,11 @@
   <h2>
     I'd appeared on this movies:
   </h2>
-  <ul>
-    <li
-      v-for="film in films"
-    >
-      {{ film }}
+  <ul class="FilmsSubList">
+    <li v-for="film in films">
+      <h3>
+        {{ film }}
+      </h3>
     </li>
   </ul>
 </section>
