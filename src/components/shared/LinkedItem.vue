@@ -37,7 +37,6 @@ export default {
 
 <style lang="scss">
 @import '../../assets/stylesheets/foundation/helpers';
-@import '../../assets/stylesheets/foundation/config';
 
 .LinkedItem {
   font-size: $font-size-m;
