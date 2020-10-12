@@ -120,5 +120,6 @@ export default {
   @extend %is-clean-list;
   @extend %goes-narrow;
   margin-top: $spacing-xl;
+  margin-bottom: $spacing-xxl;
 }
 </style>

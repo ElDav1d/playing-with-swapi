@@ -1,8 +1,18 @@
 @import '../../../assets/stylesheets/foundation/helpers';
 
 .MainNavigation {
-  border-bottom: 1px solid $white;
-  margin-bottom: $spacing-l;
+  position: fixed;
+  width:100%;
+  bottom: 0;
+  background-color: $black;
+  border-top: $border;
+  
+  @include mq(M) {
+    position: relative;
+    margin-bottom: $spacing-l;
+    border-bottom: $border;
+    border-top: none;
+  }
 
   &_List {
     @extend %is-clean-list ;

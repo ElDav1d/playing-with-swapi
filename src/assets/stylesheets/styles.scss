@@ -12,11 +12,12 @@ body {
 }
 
 main {
-  margin: 0 $spacing-m;
+  padding: $spacing-m;
   
   @include mq(M) {
     max-width: 75vw;
     margin: auto;
+    padding: 0;
   }
 
   @include mq(L) {
