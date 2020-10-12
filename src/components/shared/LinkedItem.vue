@@ -1,6 +1,6 @@
 <template>
 <router-link
-  class="navbar-list-item"
+  class="LinkedItem"
   active-class="active"
   tag="li"
   exact
@@ -34,3 +34,22 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../../assets/stylesheets/foundation/helpers';
+@import '../../assets/stylesheets/foundation/config';
+
+.LinkedItem {
+  font-size: $font-size-l;
+  padding: .75rem;
+  border: 1px solid $white;
+  
+  &:not(:last-child) {
+    margin-bottom: 1.25rem;
+
+    @include mq(M) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+</style>
