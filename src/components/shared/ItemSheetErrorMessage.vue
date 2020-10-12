@@ -3,12 +3,12 @@
   <h2>
     This is not the {{ singularizeTitle }} you are looking for
   </h2>
-  <p>
+  <h3>
     Sorry: currently we have no data for this one
-  </p>
-  <p>
+  </h3>
+  <h3>
     Don't surrender to fear and check it later!
-  </p>
+  </h3>
 </section>
 </template>
 
