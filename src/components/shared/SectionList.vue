@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import SearchInput from './SearchInput.vue';
+import SearchInput from './SearchInput/SearchInput.vue';
 import LinkedItem from './LinkedItem.vue';
 
 export default {
@@ -118,12 +118,7 @@ export default {
 
 .SectionList {
   @extend %is-clean-list;
-  @extend %has-linked-items;
+  @extend %goes-narrow;
   margin-top: $spacing-xl;
-  margin-bottom: $spacing-xl;
-
-  @include mq(M) {
-    margin-bottom: $spacing-xxl;
-  }
 }
 </style>

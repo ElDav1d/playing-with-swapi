@@ -39,7 +39,9 @@
   }
 }
 
-%has-linked-items {
+%goes-narrow {
+  width: 100%;
+
   @include mq(S) {
     width: 75%;
     margin-right: auto;

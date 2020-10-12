@@ -1,0 +1,33 @@
+@import '../../../assets/stylesheets/foundation/helpers';
+
+.SearchInput {
+  &_Label {
+    display: block;
+    margin-bottom: $spacing-s;
+    font-size: $font-size-l;
+  }
+
+  &_Field {
+    @extend %goes-narrow;
+    display: block;
+    padding: $spacing-s 0;
+    margin-bottom: $spacing-m;
+    margin-right: auto;
+    margin-left: auto;
+    color: $white;
+    background-color: $black;
+    border: $border;
+    font-family: $font-family-primary;
+    font-size: $font-size-l;
+    text-align: center;
+  }
+
+  &_Button {
+    @extend %goes-narrow;
+    display: block;
+    padding: $spacing-s;
+    font-size: $font-size-l;
+    background-color: $yellow;
+    border: $border;
+  }
+}

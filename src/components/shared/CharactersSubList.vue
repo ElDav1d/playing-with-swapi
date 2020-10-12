@@ -72,7 +72,7 @@ export default {
 
 .CharacterSubList {
   @extend %is-clean-list;
-  @extend %has-linked-items;
+  @extend %goes-narrow;
   margin-top: $spacing-xl;
 }
 </style>
