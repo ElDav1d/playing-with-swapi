@@ -25,14 +25,44 @@ main {
   }
 }
 
-h1, h2 {
-  color: $white;
-  font-family: $font-family-secondary;
-  font-weight: normal;
-  text-transform: capitalize;
+section {
+  &:not(:last-child) {
+    margin-bottom: $spacing-xl;
+  }
+}
 
-  @include mq(L) {
-    font-size: $font-size-xxl;
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: $font-family-secondary;
+}
+
+h1 {
+  margin-bottom: $spacing-l;
+  font-size: $font-size-xxl;
+  text-transform: capitalize;
+}
+
+h2 {
+  margin-bottom: $spacing-m;
+  font-size: $font-size-xl;
+}
+
+h3 {
+  font-size: $font-size-l;
+  font-weight: normal;
+
+  &:not(:last-child) {
+    margin-bottom: $spacing-s;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
