@@ -12,6 +12,10 @@ const shipsSectionTitle = 'ships';
 
 export const routes = [
   {
+    path: '/',
+    redirect: `/${homeTitle}`,
+  },
+  {
     path: `/${homeTitle}`,
     component: SectionSharedContainer,
     props: {
