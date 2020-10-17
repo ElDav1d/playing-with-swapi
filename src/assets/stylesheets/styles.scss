@@ -33,8 +33,9 @@ section {
 
 h1,
 h2,
-h3 {
-  margin-top: 0;
+h3,
+p {
+  margin: 0;
 }
 
 h1,
@@ -60,9 +61,13 @@ h3 {
   &:not(:last-child) {
     margin-bottom: $spacing-s;
   }
+}
 
-  &:last-child {
-    margin-bottom: 0;
+p {
+  font-size: $font-size-m;
+
+  &:not(:last-child) {
+    margin-bottom: $spacing-xs;
   }
 }
 

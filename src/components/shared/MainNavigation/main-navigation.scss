@@ -30,7 +30,7 @@
 
     &Item {
       padding: $spacing-s;
-      margin: $spacing-xs;
+      margin: $spacing-xxs;
 
       @include mq(M) {
         font-size: $font-size-m;
