@@ -2,7 +2,7 @@
 <nav class="MainNavigation">
   <ul class="MainNavigation_List">
     <li class="MainNavigation_ListItem">
-      <router-link to="/">
+      <router-link to="/home">
         Home
       </router-link>
     </li>

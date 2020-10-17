@@ -1,20 +1,28 @@
+import DummyContent from './components/DummyContent.vue';
 import SectionSharedContainer from './containers/SectionSharedContainer.vue';
 import SectionList from './components/shared/SectionList.vue';
 import CharacterSheet from './components/CharacterSheet.vue';
 import WorldSheet from './components/WorldSheet.vue';
 import ShipSheet from './components/ShipSheet.vue';
 
+const homeTitle = 'home';
 const charactersSectionTitle = 'characters';
 const worldsSectionTitle = 'worlds';
 const shipsSectionTitle = 'ships';
 
 export const routes = [
   {
-    path: '/',
+    path: `/${homeTitle}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: 'home'
-    }
+      sectionTitle: homeTitle,
+    },
+    children: [
+      {
+        path: '',
+        component: DummyContent,
+      }
+    ]
   },
   {
     path: `/${charactersSectionTitle}`,
