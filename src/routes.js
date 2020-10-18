@@ -24,6 +24,7 @@ export const routes = [
     children: [
       {
         path: '',
+        name: homeTitle,
         component: DummyContent,
       }
     ]
@@ -37,6 +38,7 @@ export const routes = [
     children :[
       {
         path: '',
+        name: charactersSectionTitle,
         component: SectionList,
         props: {
           apiPath: 'people',
@@ -57,6 +59,7 @@ export const routes = [
     children: [
       {
         path: '',
+        name: worldsSectionTitle,
         component: SectionList,
         props: {
           apiPath: 'planets',
@@ -77,6 +80,7 @@ export const routes = [
     children: [
       {
         path: '',
+        name: shipsSectionTitle,
         component: SectionList,
         props: {
           apiPath: 'starships',
