@@ -31,6 +31,7 @@
     &Item {
       padding: $spacing-s;
       margin: $spacing-xxs;
+      text-transform: capitalize;
 
       @include mq(M) {
         font-size: $font-size-m;

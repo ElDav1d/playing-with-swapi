@@ -1,3 +1,4 @@
+import config from './config.js';
 import DummyContent from './components/DummyContent.vue';
 import SectionSharedContainer from './containers/SectionSharedContainer.vue';
 import SectionList from './components/shared/SectionList.vue';
@@ -5,40 +6,35 @@ import CharacterSheet from './components/CharacterSheet.vue';
 import WorldSheet from './components/WorldSheet.vue';
 import ShipSheet from './components/ShipSheet.vue';
 
-const homeTitle = 'home';
-const charactersSectionTitle = 'characters';
-const worldsSectionTitle = 'worlds';
-const shipsSectionTitle = 'ships';
-
 export const routes = [
   {
     path: '/',
-    redirect: `/${homeTitle}`,
+    redirect: `/${config.HOME_TITLE}`,
   },
   {
-    path: `/${homeTitle}`,
+    path: `/${config.HOME_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: homeTitle,
+      sectionTitle: config.HOME_TITLE,
     },
     children: [
       {
         path: '',
-        name: homeTitle,
+        name: config.HOME_TITLE,
         component: DummyContent,
       }
     ]
   },
   {
-    path: `/${charactersSectionTitle}`,
+    path: `/${config.CHARACTER_SECTION_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: charactersSectionTitle,
+      sectionTitle: config.CHARACTER_SECTION_TITLE,
     },
     children :[
       {
         path: '',
-        name: charactersSectionTitle,
+        name: config.CHARACTER_SECTION_TITLE,
         component: SectionList,
         props: {
           apiPath: 'people',
@@ -51,15 +47,15 @@ export const routes = [
     ]
   },
   {
-    path: `/${worldsSectionTitle}`,
+    path: `/${config.WORLD_SECTION_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: worldsSectionTitle,
+      sectionTitle: config.WORLD_SECTION_TITLE,
     },
     children: [
       {
         path: '',
-        name: worldsSectionTitle,
+        name: config.WORLD_SECTION_TITLE,
         component: SectionList,
         props: {
           apiPath: 'planets',
@@ -72,15 +68,15 @@ export const routes = [
     ]
   },
   {
-    path: `/${shipsSectionTitle}`,
+    path: `/${config.SHIPS_SECTION_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: shipsSectionTitle,
+      sectionTitle: config.SHIPS_SECTION_TITLE,
     },
     children: [
       {
         path: '',
-        name: shipsSectionTitle,
+        name: config.SHIPS_SECTION_TITLE,
         component: SectionList,
         props: {
           apiPath: 'starships',
