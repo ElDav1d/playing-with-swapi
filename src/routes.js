@@ -1,30 +1,40 @@
+import config from './config.js';
+import DummyContent from './components/DummyContent.vue';
 import SectionSharedContainer from './containers/SectionSharedContainer.vue';
 import SectionList from './components/shared/SectionList.vue';
 import CharacterSheet from './components/CharacterSheet.vue';
 import WorldSheet from './components/WorldSheet.vue';
 import ShipSheet from './components/ShipSheet.vue';
 
-const charactersSectionTitle = 'characters';
-const worldsSectionTitle = 'worlds';
-const shipsSectionTitle = 'ships';
-
 export const routes = [
   {
     path: '/',
-    component: SectionSharedContainer,
-    props: {
-      sectionTitle: 'home'
-    }
+    redirect: `/${config.HOME_TITLE}`,
   },
   {
-    path: `/${charactersSectionTitle}`,
+    path: `/${config.HOME_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: charactersSectionTitle,
+      sectionTitle: config.HOME_TITLE,
+    },
+    children: [
+      {
+        path: '',
+        name: config.HOME_TITLE,
+        component: DummyContent,
+      }
+    ]
+  },
+  {
+    path: `/${config.CHARACTER_SECTION_TITLE}`,
+    component: SectionSharedContainer,
+    props: {
+      sectionTitle: config.CHARACTER_SECTION_TITLE,
     },
     children :[
       {
         path: '',
+        name: config.CHARACTER_SECTION_TITLE,
         component: SectionList,
         props: {
           apiPath: 'people',
@@ -37,14 +47,15 @@ export const routes = [
     ]
   },
   {
-    path: `/${worldsSectionTitle}`,
+    path: `/${config.WORLD_SECTION_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: worldsSectionTitle,
+      sectionTitle: config.WORLD_SECTION_TITLE,
     },
     children: [
       {
         path: '',
+        name: config.WORLD_SECTION_TITLE,
         component: SectionList,
         props: {
           apiPath: 'planets',
@@ -57,14 +68,15 @@ export const routes = [
     ]
   },
   {
-    path: `/${shipsSectionTitle}`,
+    path: `/${config.SHIPS_SECTION_TITLE}`,
     component: SectionSharedContainer,
     props: {
-      sectionTitle: shipsSectionTitle,
+      sectionTitle: config.SHIPS_SECTION_TITLE,
     },
     children: [
       {
         path: '',
+        name: config.SHIPS_SECTION_TITLE,
         component: SectionList,
         props: {
           apiPath: 'starships',
